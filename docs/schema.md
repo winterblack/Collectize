@@ -1,47 +1,36 @@
 # Schema Information
 
-## notes
+## Collections
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 title       | string    | not null
-body        | text      | not null
-author_id   | integer   | not null, foreign key (references users), indexed
-notebook_id | integer   | not null, foreign key (references notebooks), indexed
-archived    | boolean   | not null, default: false
+user_id     | integer   | not null, foreign key, indexed
 
-## notebooks
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-author_id   | integer   | not null, foreign key (references users), indexed
-title       | string    | not null
-description | string    | 
+## Items
+column name   | data type | details
+--------------|-----------|-----------------------
+id            | integer   | not null, primary key
+title         | string    | not null
+image         | string    | not null
+collection_id | integer   | not null, foreign key, indexed
 
-## reminders
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-user_id     | integer   | not null, foreign key (references users), indexed
-note_id     | string    | not null, foreign key (references notes), indexed
-date        | datetime  | not null
-type        | string    | not null
-prev_id     | integer   | foreign key (references reminders), indexed
+## Properties
+column name   | data type | details
+--------------|-----------|-----------------------
+id            | integer   | not null, primary key
+name          | string    | not null
+collection_id | integer   | not null, foreign key, indexed
 
-## tags
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-name        | string    | not null
+## Values
+column name  | data type | details
+-------------|-----------|-----------------------
+id           | integer   | not null, primary key
+value        | string    | not null
+valuable_id  | integer   | not null, foreign key (polymorphic), indexed
 
-## taggings
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-note_id     | integer   | not null, foreign key (references notes), indexed, unique [tag_id]
-tag_id      | integer   | not null, foreign key (references tags), indexed
 
-## users
+## Users
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key

@@ -6,24 +6,24 @@
 
 ## Minimum Viable Product
 
-Collectize is a web application inspired by Pinterest that will be build using Ruby on Rails and React.js.  By the end of Week 2, this app will, at a minimum, satisfy the following criteria:
+Collectize is a web application inspired by Pinterest that will be build using Ruby on Rails and React.js.  By the end of Week 9, this app will, at a minimum, satisfy the following criteria:
 
 - [x] Hosting on Heroku
 - [ ] New account creation, login, and guest/demo login
 - [ ] A production README, replacing this README (**NB**: check out the [sample production README](docs/production_readme.md) -- you'll write this later)
-- [ ] Notes
+- [ ] Feed & Profile
   - [ ] Smooth, bug-free navigation
   - [ ] Adequate seed data to demonstrate the site's features
   - [ ] Adequate CSS styling
-- [ ] Notebooks for organizing notes
+- [ ] Collections & Items
   - [ ] Smooth, bug-free navigation
   - [ ] Adequate seed data to demonstrate the site's features
   - [ ] Adequate CSS styling
-- [ ] Tags for notes
+- [ ] Custom Properties
   - [ ] Smooth, bug-free navigation
   - [ ] Adequate seed data to demonstrate the site's features
   - [ ] Adequate CSS styling
-- [ ] Rich Text Editing of notes
+- [ ] Sort & Filter Collections
   - [ ] Smooth, bug-free navigation
   - [ ] Adequate seed data to demonstrate the site's features
   - [ ] Adequate CSS styling
@@ -58,53 +58,53 @@ Collectize is a web application inspired by Pinterest that will be build using R
 - [ ] blank landing component after signin
 - [ ] style signin/signup components
 
-### Phase 2: Notes Model, API, and components (2 days, W1 F 6pm)
+### Phase 2: Items Model, API, and components (2 days, W1 F 6pm)
 
-**Objective:** Notes can be created, read, edited and destroyed through
+**Objective:** Items can be created, read, edited and destroyed through
 the API.
 
-- [ ] create `Note` model
+- [ ] create `Item` model
 - [ ] seed the database with a small amount of test data
-- [ ] CRUD API for notes (`NotesController`)
-- [ ] jBuilder views for notes
+- [ ] CRUD API for items (`ItemsController`)
+- [ ] jBuilder views for items
 - [ ] test out API interaction in the console.
-- implement each note component, building out the flux loop as needed.
-  - [ ] `NotesIndex`
-  - [ ] `NoteIndexItem`
-  - [ ] `NoteForm`
-- [ ] save Notes to the DB when the form loses focus or is left idle after editing.
+- implement each item component, building out the flux loop as needed.
+  - [ ] `ItemsIndex`
+  - [ ] `ItemIndexItem`
+  - [ ] `ItemForm`
+- [ ] save Items to the DB when the form loses focus or is left idle after editing.
 - [ ] basic styling for existing components
 
-### Phase 3: Notebooks (2 day, W2 Tu 6pm)
+### Phase 3: Collections (2 day, W2 Tu 6pm)
 
-**Objective:** Notes belong to Notebooks, and can be viewed by notebook.
+**Objective:** Items belong to Collections, and can be viewed by collection.
 
-- [ ] create `Notebook` model
+- [ ] create `Collection` model
 - build out API, Flux loop, and components for:
-  - [ ] Notebook CRUD
-  - [ ] adding notes requires a notebook
-  - [ ] moving notes to a different notebook
-  - [ ] viewing notes by notebook
+  - [ ] Collection CRUD
+  - [ ] adding items requires a collection
+  - [ ] moving items to a different collection
+  - [ ] viewing items by collection
 - Use CSS to style new components
 
-Phase 3 adds organization to the Notes. Notes belong to a Notebook,
+Phase 3 adds organization to the Items. Items belong to a Collection,
 which has its own `Index` view.
 
 ### Phase 4: Tags (1 days, W2 W 6pm)
 
-**Objective:** Notes can be tagged with multiple tags, and tags are searchable.
+**Objective:** Items can be tagged with multiple tags, and tags are searchable.
 
 - [ ] create `Tag` model and join table
 - build out API, Flux loop, and components for:
-  - [ ] fetching tags for notebook
-  - [ ] adding tags to notebook
-  - [ ] creating tags while adding to notebooks
-  - [ ] searching notebooks by tag
+  - [ ] fetching tags for collection
+  - [ ] adding tags to collection
+  - [ ] creating tags while adding to collections
+  - [ ] searching collections by tag
 - [ ] Style new elements
 
-### Phase 5: Allow Complex Styling in Notes (1 days, W2 Th 6pm)
+### Phase 5: Allow Complex Styling in Items (1 days, W2 Th 6pm)
 
-**objective:** Enable complex styling of notes.
+**objective:** Enable complex styling of items.
 
 - [ ] Integrate `react-quill` (based on Quill.js).
 - [ ] Use Rails helpers to sanitize HTML before rendering.
@@ -118,10 +118,10 @@ which has its own `Index` view.
 - [ ] Add modals, transitions, and other styling flourishes.
 
 ### Bonus Features (TBD)
-- [ ] Search through notes for blocks of text
-- [ ] Pagination / infinite scroll for Notes Index
-- [ ] Set reminders on notes
-- [ ] Changelogs for Notes
+- [ ] Search through items for blocks of text
+- [ ] Pagination / infinite scroll for Items Index
+- [ ] Set reminders on items
+- [ ] Changelogs for Items
 - [ ] Multiple sessions
 
 [phase-one]: docs/phases/phase1.md

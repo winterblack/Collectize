@@ -11,33 +11,28 @@
 ### Users
 
 - `POST /api/users`
-- `PATCH /api/users`
 
 ### Session
 
 - `POST /api/session`
 - `DELETE /api/session`
-- `GET /api/session`
 
-### Notes
+### Collections
 
-- `GET /api/notes`
-  - Notes index/search
-  - accepts `tag_name` query param to list notes by tag
-  - accepts pagination params (if I get there)
-- `POST /api/notes`
-- `GET /api/notes/:id`
-- `PATCH /api/notes/:id`
-- `DELETE /api/notes/:id`
+- `GET /api/collections`
+- `POST /api/collections`
+- `GET /api/collections/:id`
+- `PATCH /api/collections/:id`
+- `DELETE /api/collections/:id`
 
-### Notebooks
+### Items
 
-- `GET /api/notebooks`
-- `POST /api/notebooks`
-- `GET /api/notebooks/:id`
-- `PATCH /api/notebooks/:id`
-- `DELETE /api/notebooks/:id`
-- `GET /api/notebooks/:id/notes`
+- `GET /api/collections`
+- `POST /api/collections`
+- `GET /api/collections/:id`
+- `PATCH /api/collections/:id`
+- `DELETE /api/collections/:id`
+- `GET /api/collections/:id/notes`
   - index of all notes for a notebook
   - accepts pagination params (if I get there)
 

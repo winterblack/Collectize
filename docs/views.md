@@ -1,22 +1,17 @@
 # View Wireframes
 
-## New User
-![new-user]
+## Feed
 
-## New Session
-![new-session]
+## Profile
 
-## NotesIndex / NoteIndexItem / NoteForm
-![notes]
+## Collection
 
-## NotebooksIndex / NotebookIndexItem
-![notebooks]
+## Item
 
-## NotebookForm
-![notebook-form]
+## New Collection Form
 
-[new-user]: ./wireframes/new_user.png
-[new-session]: ./wireframes/new_session.png
-[notes]: ./wireframes/root_notes.png
-[notebooks]: ./wireframes/root_notebooks.png
-[notebook-form]: ./wireframes/notebook_form.png
+## New Item Form
+
+## Login
+
+## Signup
