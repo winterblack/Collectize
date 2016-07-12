@@ -11,10 +11,10 @@
     * CollectionThumb
   * **Profile**
     * CollectionThumb
-  * **NewCollectionForm**
+  * **CollectionForm**
   * **Collection**
       * ItemThumb
-      * **NewItemForm**
+      * **Item Form**
       * **Item**
         * EditItemForm
 
@@ -26,7 +26,7 @@
   * **component** `LoginForm` **path:** `/login`
   * **component** `SignupForm` **path:** `/signup`
   * **component:** `Profile` **path:** `/:username`
-  * **component:** `NewCollecionForm` **path:** `/newcollection`  
+  * **component:** `CollectionForm` **path:** `/newcollection`  
   * **component:** `Collection` **path:** `collections/:id`
-  * **component:** `NewItemForm` **path:** `/newcollections`
+  * **component:** `ItemForm` **path:** `/newcollections`
   * **component:** `Item` **path:** `items/:id`
