@@ -55,37 +55,37 @@ const LoginForm = React.createClass({
   },
 	render() {
     let navLink;
+		let formName;
     if (this.formType() === "login") {
-      navLink = <Link to="/signup">sign up instead</Link>;
+      navLink = <Link className="nav-link" to="/signup">Sign Up</Link>
+			formName = "Log In"
     } else {
-      navLink = <Link to="/login">log in instead</Link>;
+      navLink = <Link className="nav-link" to="/login">Log In</Link>
+			formName = "Sign Up"
     }
 		return (
-			<div className="login-form-container">
+			<div className="login-screen">
 				<form onSubmit={this.handleSubmit} className="login-form-box">
-					<br/>
-					Please { this.formType() } or { navLink }
-
-	        { this.fieldErrors("base") }
+					<div className="login-header"> Collectize </div>
 					<div className="login-form">
-		        <br />
-						<label> Username:
-		          { this.fieldErrors("username") }
+						<div className="login-signup"> { formName } </div>
+						{ this.fieldErrors("base") }
+						{ this.fieldErrors("username") }
+						{ this.fieldErrors("password") }
+						<div className="login-input" >
 							<input type="text"
-		            value={this.state.username}
-		            onChange={this.update("username")}
-								className="login-input" />
-						</label>
-		        <br />
-						<label> Password:
-		          { this.fieldErrors("password") }
+							value={this.state.username}
+							onChange={this.update("username")}
+							placeholder="Username" />
+						</div>
+						<div className="login-input" >
 		          <input type="password"
 		            value={this.state.password}
 		            onChange={this.update("password")}
-								className="login-input" />
-						</label>
-		        <br />
-						<input type="submit" value="Submit" />
+								placeholder="Password" />
+						</div>
+						<input type="submit" value={formName} />
+						<div className="login-footer">{ navLink }</div>
 					</div>
 				</form>
 			</div>

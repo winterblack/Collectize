@@ -55,7 +55,7 @@ Collectize is a web application inspired by Pinterest that will use Ruby on Rail
 - [x] authentication back end (`User` model, `SessionController`, etc.)
 - [x] front end authentication flux cycle
 - [x] signup/login react components
-- [ ] signup/login styling
+- [x] signup/login styling
 
 ### Phase 2: Collections Model, API, and components (2 days, W1D4 6pm)
 

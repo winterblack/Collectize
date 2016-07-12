@@ -6,28 +6,28 @@ const ReactRouter = require('react-router')
 const Router = ReactRouter.Router
 const Route = ReactRouter.Route
 const hashHistory = ReactRouter.hashHistory
-const IndexRoute = ReactRouter.IndexRoute
+const IndexRedirect = ReactRouter.IndexRedirect
 //Components
 const LoginForm = require("./components/login_form")
+const SessionActions = require("./actions/session_actions")
 const App = React.createClass({
+  _handleLogOut(){
+    SessionActions.logOut();
+  },
   render() {
     return (
-      <div> { this.props.children } </div>
+      <div>
+        <input className="logout-button" type="submit" value="X" onClick={ this._handleLogOut } />
+        { this.props.children }
+      </div>
     );
-  }
-})
-const HelloWorld = React.createClass({
-  render() {
-    return (
-      <div>Hello World</div>
-    )
   }
 })
 
 const appRouter = (
   <Router history={ hashHistory }>
     <Route path="/" component={ App }>
-      <IndexRoute component={ HelloWorld }/>
+      <IndexRedirect to="/login" />
       <Route path="/login" component={ LoginForm }/>
       <Route path="/signup" component={ LoginForm }/>
     </Route>
