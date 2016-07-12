@@ -9,7 +9,7 @@
 Collectize is a web application inspired by Pinterest that will use Ruby on Rails and React.js.  By the end of Week 2, this app will, at a minimum, satisfy the following criteria:
 
 - [x] Hosting on Heroku
-- [ ] New account creation, login, and guest/demo login
+- [x] New account creation, login
 - [ ] A production README, replacing this README (**NB**: check out the [sample production README](docs/production_readme.md) -- you'll write this later)
 - [ ] Homepage & Profile
   - [ ] Smooth, bug-free navigation
@@ -48,13 +48,13 @@ Collectize is a web application inspired by Pinterest that will use Ruby on Rail
 **Objective:** Functioning rails project with front-end Authentication
 
 - [x] create new rails project
-- [ ] install gems
-- [ ] install node packages
-- [ ] front end skeleton
-- [ ] configure webpack
-- [ ] authentication back end (`User` model, `SessionController`, etc.)
-- [ ] front end authentication flux cycle
-- [ ] signup/login react components
+- [x] install gems
+- [x] install node packages
+- [x] front end skeleton
+- [x] configure webpack
+- [x] authentication back end (`User` model, `SessionController`, etc.)
+- [x] front end authentication flux cycle
+- [x] signup/login react components
 - [ ] signup/login styling
 
 ### Phase 2: Collections Model, API, and components (2 days, W1D4 6pm)
