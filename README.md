@@ -6,7 +6,7 @@
 
 ## Minimum Viable Product
 
-Collectize is a web application inspired by Pinterest that will be build using Ruby on Rails and React.js.  By the end of Week 9, this app will, at a minimum, satisfy the following criteria:
+Collectize is a web application inspired by Pinterest that will use Ruby on Rails and React.js.  By the end of Week 2, this app will, at a minimum, satisfy the following criteria:
 
 - [x] Hosting on Heroku
 - [ ] New account creation, login, and guest/demo login
@@ -65,7 +65,7 @@ Collectize is a web application inspired by Pinterest that will be build using R
 - [ ] seed database with test data
 - [ ] CRUD API for Collections (`CollectionsController`)
 - [ ] jBuilder views for Collections
-- * Collection react components
+- Collection react components
   - [ ] `CollectionsIndex`
   - [ ] `CollectionThumb`(dummy object)
   - [ ] `CollectionForm`
@@ -102,7 +102,7 @@ which has its own `Index` view.
 
 **objective:** Enable complex styling throughout.
 
-- [ ] animate `Item` components when they're sorted & filtered (react-stonecutter or reword library)
+- [ ] animate `Item` components when they're sorted & filtered
 
 ### Phase 6: Styling Cleanup and Seeding (1 day, W25 6pm)
 
