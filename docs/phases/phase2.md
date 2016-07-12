@@ -1,11 +1,11 @@
-# Phase 2: Flux Architecture and Note CRUD (2 days, W1 F 6pm)
+# Phase 2: Flux Architecture and Collection CRUD (2 days, W1 F 6pm)
 
 ## Rails
 ### Models
-* Note
+* Collection
 
 ### Controllers
-* Api::NotesController (create, destroy, index, show, update)
+* Api::CollectionsController (create, destroy, index, show, update)
 
 ### Views
 * notes/index.json.jbuilder
@@ -13,28 +13,28 @@
 
 ## Flux
 ### Views (React Components)
-* NotesIndex
-  - NotesIndexItem
-* NoteForm
+* CollectionsIndex
+  - CollectionsIndexItem
+* CollectionForm
 
 ### Stores
-* Note
+* Collection
 
 ### Actions
-* `ApiActions.receiveAllNotes`
-* `ApiActions.receiveSingleNote`
-* `ApiActions.deleteNote`
-* `NoteActions.fetchAllNotes`
-* `NoteActions.fetchSingleNote`
-* `NoteActions.createNote`
-* `NoteActions.editNote`
-* `NoteActions.destroyNote`
+* `ApiActions.receiveAllCollections`
+* `ApiActions.receiveSingleCollection`
+* `ApiActions.deleteCollection`
+* `CollectionActions.fetchAllCollections`
+* `CollectionActions.fetchSingleCollection`
+* `CollectionActions.createCollection`
+* `CollectionActions.editCollection`
+* `CollectionActions.destroyCollection`
 
 ### ApiUtil
-* `ApiUtil.fetchAllNotes`
-* `ApiUtil.fetchSingleNote`
-* `ApiUtil.createNote`
-* `ApiUtil.editNote`
-* `ApiUtil.destroyNote`
+* `ApiUtil.fetchAllCollections`
+* `ApiUtil.fetchSingleCollection`
+* `ApiUtil.createCollection`
+* `ApiUtil.editCollection`
+* `ApiUtil.destroyCollection`
 
 ## Gems/Libraries
