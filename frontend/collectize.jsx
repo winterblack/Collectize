@@ -6,10 +6,15 @@ const ReactRouter = require('react-router')
 const Router = ReactRouter.Router
 const Route = ReactRouter.Route
 const hashHistory = ReactRouter.hashHistory
-const IndexRedirect = ReactRouter.IndexRedirect
+const IndexRoute = ReactRouter.IndexRoute
 //Components
 const LoginForm = require("./components/login_form")
 const SessionActions = require("./actions/session_actions")
+const Homepage = require("./components/homepage")
+
+window.CollectionStore = require("./stores/collection_store")
+window.CollectionActions = require("./actions/collection_actions")
+
 const App = React.createClass({
   _handleLogOut(){
     SessionActions.logOut();
@@ -27,7 +32,7 @@ const App = React.createClass({
 const appRouter = (
   <Router history={ hashHistory }>
     <Route path="/" component={ App }>
-      <IndexRedirect to="/login" />
+      <IndexRoute component={ Homepage } />
       <Route path="/login" component={ LoginForm }/>
       <Route path="/signup" component={ LoginForm }/>
     </Route>

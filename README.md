@@ -61,14 +61,14 @@ Collectize is a web application inspired by Pinterest that will use Ruby on Rail
 
 **Objective:** Collections can be created, read, edited and destroyed through the API.
 
-- [ ] create `Collection` model
+- [x] create `Collection` model
 - [ ] seed database with test data
 - [ ] CRUD API for Collections (`CollectionsController`)
-- [ ] jBuilder views for Collections
+- [x] jBuilder views for Collections
 - Collection react components
-  - [ ] `CollectionsIndex`
+  - [x] `CollectionsIndex`
   - [ ] `CollectionThumb`(dummy object)
-  - [ ] `CollectionForm`
+  - [x] `CollectionForm`
 - [ ] search Collections by characteristic in navbar
 - [ ] basic styling
 

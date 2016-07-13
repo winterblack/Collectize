@@ -57,36 +57,34 @@ const LoginForm = React.createClass({
     let navLink;
 		let formName;
     if (this.formType() === "login") {
-      navLink = <Link className="nav-link" to="/signup">Sign Up</Link>
+      navLink = <Link className="login-input nav-link" to="/signup">Sign Up</Link>
 			formName = "Log In"
     } else {
-      navLink = <Link className="nav-link" to="/login">Log In</Link>
+      navLink = <Link className="login-input nav-link" to="/login">Log In</Link>
 			formName = "Sign Up"
     }
 		return (
 			<div className="login-screen">
 				<form onSubmit={this.handleSubmit} className="login-form-box">
-					<div className="login-header"> Collectize </div>
+					<div className="header-row login-header"> Collectize </div>
 					<div className="login-form">
-						<div className="login-signup"> { formName } </div>
+						<div className="header-row"> { formName } </div>
 						{ this.fieldErrors("base") }
 						{ this.fieldErrors("username") }
 						{ this.fieldErrors("password") }
-						<div className="login-input" >
-							<input type="text"
-							value={this.state.username}
-							onChange={this.update("username")}
-							placeholder="Username" />
-						</div>
-						<div className="login-input" >
-		          <input type="password"
-		            value={this.state.password}
-		            onChange={this.update("password")}
-								placeholder="Password" />
-						</div>
-						<input type="submit" value={formName} />
-						<div className="login-footer">{ navLink }</div>
+						<input className="login-input login-field"
+									 type="text"
+									 value={this.state.username}
+									 onChange={this.update("username")}
+									 placeholder="Username" />
+								 <input className="login-input login-field"
+									 type="password"
+	            		 value={this.state.password}
+									 onChange={this.update("password")}
+									 placeholder="Password" />
+						<input className="login-input login-button" type="submit" value={formName} />
 					</div>
+					<div className="login-footer">{ navLink }</div>
 				</form>
 			</div>
 		);

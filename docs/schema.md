@@ -15,7 +15,7 @@ title         | string    | not null
 image         | string    | not null
 collection_id | integer   | not null, foreign key, indexed
 
-## Properties
+## Characteristics
 column name   | data type | details
 --------------|-----------|-----------------------
 id            | integer   | not null, primary key
