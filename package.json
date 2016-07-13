@@ -14,7 +14,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "./node_modules/.bin/webpack",
-    "start": "web:bundle exec thin start -p $PORT"
+    "start": "bundle exec thin start -p $PORT"
   },
   "repository": {
     "type": "git",
