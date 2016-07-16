@@ -22,9 +22,7 @@ const Homepage = React.createClass({
   render() {
     return (
       <div>
-        This is the homepage
         <CollectionIndex collections={this.state.collections}/>
-        <CollectionForm/>
       </div>
     )
   }

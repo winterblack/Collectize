@@ -7,7 +7,7 @@ const CollectionIndex = React.createClass({
       <div>
         <ul>
           {this.props.collections.map( collection => {
-            return<li key={collection.id}>{collection.title}</li>
+            return<li className="collection-thumb" key={collection.id}>{collection.title}</li>
           })}
         </ul>
       </div>

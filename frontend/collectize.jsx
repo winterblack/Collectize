@@ -8,26 +8,13 @@ const Route = ReactRouter.Route
 const hashHistory = ReactRouter.hashHistory
 const IndexRoute = ReactRouter.IndexRoute
 //Components
-const LoginForm = require("./components/login_form")
-const SessionActions = require("./actions/session_actions")
+const App = require("./components/app")
 const Homepage = require("./components/homepage")
+const LoginForm = require("./components/login_form")
+//Auth
+const SessionActions = require("./actions/session_actions")
 
-window.CollectionStore = require("./stores/collection_store")
-window.CollectionActions = require("./actions/collection_actions")
-
-const App = React.createClass({
-  _handleLogOut(){
-    SessionActions.logOut();
-  },
-  render() {
-    return (
-      <div>
-        <input className="logout-button" type="submit" value="X" onClick={ this._handleLogOut } />
-        { this.props.children }
-      </div>
-    );
-  }
-})
+window.SessionStore = require("./stores/session_store")
 
 const appRouter = (
   <Router history={ hashHistory }>
@@ -40,6 +27,9 @@ const appRouter = (
 )
 
 $(document).ready(function() {
+  if (window.currentUser) {
+    SessionActions.receiveCurrentUser(window.currentUser);
+  }
   const root = document.getElementById('root')
   ReactDOM.render(appRouter, root)
 })
