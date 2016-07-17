@@ -13,7 +13,7 @@ const Navbar = React.createClass({
       <div className="navbar">
         <div className="nav-center">
           <div className="search">Search</div>
-          <div>{SessionStore.currentUser().username}</div>
+          <div className="profile-link">{SessionStore.currentUser().username}</div>
           <input className="logout" type="submit" value="X" onClick={ this._handleLogOut } />
         </div>
       </div>

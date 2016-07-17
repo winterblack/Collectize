@@ -23,28 +23,29 @@
 .nav-center {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .search {
   float: left;
   width: 600px;
-  height: 16px;
-  padding: 7px;
-  margin: 14px 10px 14px 20px;
+  height: 30px;
   border: 1px solid #ddd;
   border-radius: 3px;
   font-weight: bold;
   color: #aaa;
   background: #eee;
+  line-height: 30px;
+  padding-left: 10px;
+  margin-left: 10px;
 }
 
 .logout {
   float: left;
   height: 30px;
   width: 30px;
-  margin: 15px 20px 15px 0;
+  margin: 14px 20px 14px 0;
   border: 1px solid #ddd;
-  color: #888;
   font-weight: bold;
   border-radius: 0 3px 3px 0;
   text-align: center;
@@ -54,10 +55,23 @@
   float: left;
   height: 220px;
   width: 220px;
-  border: 1px solid black;
   margin: 10px;
   text-align: center;
   line-height: 220px;
   background: black;
   color: white;
+}
+
+.profile-link {
+  height: 30px;
+  width: 270px;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  border-radius: 3px 0 0 3px;
+  margin: 14px 0 14px 10px;
+  line-height: 30px;
+  text-align: center;
+  font-weight: bold;
+  color: #888;
 }
