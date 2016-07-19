@@ -17,8 +17,12 @@ function addCollection(collection){
 }
 CollectionStore.__onDispatch = function(action) {
   switch(action.type) {
-    case Constants.COLLECTIONS_RECEIVED: resetAllCollections(action.collections); break;
-    case Constants.COLLECTION_RECEIVED: addCollection(action.collection); break;
+    case Constants.COLLECTIONS_RECEIVED:
+      resetAllCollections(action.collections);
+      break;
+    case Constants.COLLECTION_RECEIVED:
+      addCollection(action.collection);
+      break;
   }
 }
 

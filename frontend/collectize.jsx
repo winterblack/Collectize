@@ -11,10 +11,11 @@ const IndexRoute = ReactRouter.IndexRoute
 const App = require("./components/app")
 const Homepage = require("./components/homepage")
 const LoginForm = require("./components/login_form")
+const Profile = require("./components/profile")
+const CollectionForm = require("./components/collection_form")
 //Auth
 const SessionActions = require("./actions/session_actions")
-
-window.SessionStore = require("./stores/session_store")
+const SessionStore = require("./stores/session_store")
 
 const appRouter = (
   <Router history={ hashHistory }>
@@ -22,6 +23,9 @@ const appRouter = (
       <IndexRoute component={ Homepage } />
       <Route path="/login" component={ LoginForm }/>
       <Route path="/signup" component={ LoginForm }/>
+      <Route path="/:username" component={ Profile }>
+        <Route path="newcollection" component={ CollectionForm }/>
+      </Route>
     </Route>
   </Router>
 )
@@ -33,3 +37,6 @@ $(document).ready(function() {
   const root = document.getElementById('root')
   ReactDOM.render(appRouter, root)
 })
+
+window.SessionStore = require("./stores/session_store")
+window.CollectionActions = require("./actions/collection_actions")

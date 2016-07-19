@@ -51,7 +51,7 @@ const LoginForm = React.createClass({
     return this.props.location.pathname.slice(1);
   },
   update(property) {
-    return (e) => this.setState({[property]: e.target.value});
+    return (event) => this.setState({[property]: event.target.value});
   },
 	render() {
     let navLink;

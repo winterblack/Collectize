@@ -28,5 +28,5 @@
   * **component:** `Profile` **path:** `/:username`
   * **component:** `CollectionForm` **path:** `/newcollection`  
   * **component:** `Collection` **path:** `collections/:id`
-  * **component:** `ItemForm` **path:** `/newcollections`
+  * **component:** `ItemForm` **path:** `/collections/new`
   * **component:** `Item` **path:** `items/:id`

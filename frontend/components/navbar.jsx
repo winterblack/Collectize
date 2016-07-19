@@ -2,20 +2,21 @@ const React = require('react')
 const SessionActions = require("../actions/session_actions")
 const SessionStore = require("../stores/session_store")
 const Link = require("react-router").Link
-const hashHistory = require('react-router').hashHistory;
+const hashHistory = require('react-router').hashHistory
 
 const Navbar = React.createClass({
   _handleLogOut(){
-    SessionActions.logOut();
+    SessionActions.logOut()
   },
   render: function() {
+    let profile = SessionStore.currentUser().username
+    let login = "login"
     return (
       <div className="navbar">
-        <div className="nav-center">
-          <div className="search">Search</div>
-          <div className="profile-link">{SessionStore.currentUser().username}</div>
-          <input className="logout" type="submit" value="X" onClick={ this._handleLogOut } />
-        </div>
+        <Link to="/" className="homepage-link">C</Link>
+        <div className="search">Search</div>
+        <Link to={profile || login} className="profile-link">{profile}</Link>
+        <input className="logout" type="submit" value="X" onClick={ this._handleLogOut } />
       </div>
     )
   }

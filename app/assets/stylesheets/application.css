@@ -15,36 +15,43 @@
  */
 
 .navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 60px;
   background: white;
   border-bottom: 1px solid #ccc;
 }
 
-.nav-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.homepage-link {
+  height: 30px;
+  line-height: 30px;
+  min-width: 30px;
+  margin-left: 20px;
+  border: 1px solid #ddd;
+  font-weight: bold;
+  border-radius: 3px 0 0 3px;
+  text-align: center;
 }
 
 .search {
-  float: left;
   width: 600px;
   height: 30px;
-  border: 1px solid #ddd;
-  border-radius: 3px;
+  border-top: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  border-radius: 0 3px 3px 0;
   font-weight: bold;
   color: #aaa;
   background: #eee;
   line-height: 30px;
   padding-left: 10px;
-  margin-left: 10px;
 }
 
 .logout {
-  float: left;
   height: 30px;
-  width: 30px;
-  margin: 14px 20px 14px 0;
+  min-width: 30px;
+  margin-right: 20px;
   border: 1px solid #ddd;
   font-weight: bold;
   border-radius: 0 3px 3px 0;
@@ -62,6 +69,10 @@
   color: white;
 }
 
+.new-collection {
+  font-size: 110px;
+}
+
 .profile-link {
   height: 30px;
   width: 270px;
@@ -69,9 +80,19 @@
   border-bottom: 1px solid #ddd;
   border-left: 1px solid #ddd;
   border-radius: 3px 0 0 3px;
-  margin: 14px 0 14px 10px;
+  margin-left: 10px;
   line-height: 30px;
   text-align: center;
   font-weight: bold;
   color: #888;
+  padding: 0 10px
+}
+
+.profile-header {
+  height: 60px;
+  font-size: 30px;
+  line-height: 60px;
+  padding-left: 20px;
+  background: white;
+  border-bottom: 1px solid #ddd;
 }

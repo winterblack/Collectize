@@ -20,9 +20,8 @@ const SessionActions = {
   logOut() {
     SessionApiUtil.logOut(SessionActions.removeCurrentUser)
   },
-  fetchCurrentUser(complete){
-    SessionApiUtil.fetchCurrentUser(
-      SessionActions.receiveCurrentUser, complete)
+  resetCurrentUser(){
+    $.get("api/user", SessionActions.receiveCurrentUser)
   },
   receiveCurrentUser(currentUser) {
     Dispatcher.dispatch({
