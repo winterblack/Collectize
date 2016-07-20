@@ -10,6 +10,12 @@ class Api::CollectionsController < ApplicationController
     render :show
   end
 
+  def destroy
+    @collection = Collection.find(params[:id])
+    @collection.destroy
+    render :show
+  end
+
   private
 
   def collection_params

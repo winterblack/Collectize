@@ -23,6 +23,7 @@ const Homepage = React.createClass({
     return (
       <div>
         <CollectionIndex collections={this.state.collections}/>
+        {this.props.children}
       </div>
     )
   }

@@ -13,18 +13,23 @@ const Homepage = require("./components/homepage")
 const LoginForm = require("./components/login_form")
 const Profile = require("./components/profile")
 const CollectionForm = require("./components/collection_form")
+const Collection = require("./components/collection")
 //Auth
 const SessionActions = require("./actions/session_actions")
 const SessionStore = require("./stores/session_store")
 
 const appRouter = (
   <Router history={ hashHistory }>
-    <Route path="/" component={ App }>
-      <IndexRoute component={ Homepage } />
-      <Route path="/login" component={ LoginForm }/>
-      <Route path="/signup" component={ LoginForm }/>
-      <Route path="/:username" component={ Profile }>
+    <Route path="" component={ App }>
+      <Route path="/" component={ Homepage }>
+        <Route path="login" component={ LoginForm }/>
+        <Route path="signup" component={ LoginForm }/>
+      </Route>
+      <Route path="users/:userId" component={ Profile }>
         <Route path="newcollection" component={ CollectionForm }/>
+      </Route>
+      <Route path="collections/:collectionId" component={ Collection }>
+        <Route path="edit" component={ CollectionForm }/>
       </Route>
     </Route>
   </Router>
@@ -38,5 +43,7 @@ $(document).ready(function() {
   ReactDOM.render(appRouter, root)
 })
 
-window.SessionStore = require("./stores/session_store")
+window.CollectionStore = require("./stores/collection_store")
 window.CollectionActions = require("./actions/collection_actions")
+window.SessionStore = require("./stores/session_store")
+window.SessionActions = require("./actions/session_actions")

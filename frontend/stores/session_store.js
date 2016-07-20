@@ -5,18 +5,19 @@ const Constants = require('../constants')
 const SessionStore = new Store(Dispatcher)
 
 let _currentUser = {}
-let _collections = []
+let _userCollections = {}
 
 const _resetCurrentUser = function(currentUser) {
   _currentUser = currentUser
-  _collections = currentUser.collections
+  _userCollections = currentUser.collections || {}
 }
 const _logout = function() {
   _currentUser = {}
 }
-const _addCollection = function(collection) {
-  _collections.push(collection)
+const _setCollection = function(collection) {
+  _userCollections[collection.id] = collection
 }
+
 SessionStore.__onDispatch = action => {
   switch(action.type) {
     case Constants.LOGIN:
@@ -28,7 +29,7 @@ SessionStore.__onDispatch = action => {
       SessionStore.__emitChange();
       break;
     case Constants.COLLECTION_RECEIVED:
-      _addCollection(action.collection);
+      _setCollection(action.collection);
       SessionStore.__emitChange()
       break;
   }
@@ -40,7 +41,7 @@ SessionStore.isUserLoggedIn = function() {
   return !!_currentUser.id
 }
 SessionStore.collections = function() {
-  return _collections.slice()
+  return Object.assign({}, _userCollections)
 }
 
 module.exports = SessionStore

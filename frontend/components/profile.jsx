@@ -13,6 +13,7 @@ const Profile = React.createClass({
   },
   componentDidMount() {
     SessionStore.addListener(this._handleChange)
+    SessionActions.resetCurrentUser()
   },
   _handleChange() {
     this.setState({
@@ -22,9 +23,9 @@ const Profile = React.createClass({
   render() {
     return (
       <div>
-        <div className="profile-header">{this.state.username}</div>
+        <div className="header">{this.state.username}</div>
         <CollectionIndex collections={this.state.collections}/>
-        <Link to={this.state.username + "/newcollection"} className="collection-thumb new-collection">+</Link>
+        <Link to={"users/" + SessionStore.currentUser().id + "/newcollection"} className="collection-thumb new-collection">+</Link>
         {this.props.children}
       </div>
     );

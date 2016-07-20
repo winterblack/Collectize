@@ -54,37 +54,39 @@ const LoginForm = React.createClass({
     return (event) => this.setState({[property]: event.target.value});
   },
 	render() {
-    let navLink;
-		let formName;
+    let navLink, formName;
     if (this.formType() === "login") {
-      navLink = <Link className="login-input nav-link" to="/signup">Sign Up</Link>
+      navLink = <Link className="input nav-link" to="/signup">Sign Up</Link>
 			formName = "Log In"
     } else {
-      navLink = <Link className="login-input nav-link" to="/login">Log In</Link>
+      navLink = <Link className="input nav-link" to="/login">Log In</Link>
 			formName = "Sign Up"
     }
 		return (
-			<div className="login-screen">
-				<form onSubmit={this.handleSubmit} className="login-form-box">
-					<div className="header-row login-header"> Collectize </div>
-					<div className="login-form">
-						<div className="header-row"> { formName } </div>
+			<div className="screen-fade">
+				<form onSubmit={this.handleSubmit} className="form-box">
+					<div className="form-header logo">
+						Collectize
+						<Link to="/" className="dismiss">X</Link>
+					</div>
+					<div className="form">
+						<div className="form-header"> { formName } </div>
 						{ this.fieldErrors("base") }
 						{ this.fieldErrors("username") }
 						{ this.fieldErrors("password") }
-						<input className="login-input login-field"
+						<input className="input input-field login-field"
 									 type="text"
 									 value={this.state.username}
 									 onChange={this.update("username")}
 									 placeholder="Username" />
-								 <input className="login-input login-field"
+								 <input className="input input-field login-field"
 									 type="password"
 	            		 value={this.state.password}
 									 onChange={this.update("password")}
 									 placeholder="Password" />
-						<input className="login-input login-button" type="submit" value={formName} />
+								 <input className="input submit-button" type="submit" value={formName} />
 					</div>
-					<div className="login-footer">{ navLink }</div>
+					<div className="form-footer">{ navLink }</div>
 				</form>
 			</div>
 		);

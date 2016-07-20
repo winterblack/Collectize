@@ -9,14 +9,21 @@ const Navbar = React.createClass({
     SessionActions.logOut()
   },
   render: function() {
-    let profile = SessionStore.currentUser().username
-    let login = "login"
+    let user, session;
+    let username = SessionStore.currentUser().username
+    if (username) {
+      user = <Link to={"users/" + SessionStore.currentUser().id} className="profile-link">{username}</Link>
+      session = <input className="logout" type="submit" value="X" onClick={this._handleLogOut}/>
+    } else {
+      user = <Link to="signup" className="signup">Sign Up</Link>
+      session = <Link to="login" className="login">Log In</Link>
+    }
     return (
       <div className="navbar">
         <Link to="/" className="homepage-link">C</Link>
         <div className="search">Search</div>
-        <Link to={profile || login} className="profile-link">{profile}</Link>
-        <input className="logout" type="submit" value="X" onClick={ this._handleLogOut } />
+        { user }
+        { session }
       </div>
     )
   }
