@@ -1,5 +1,5 @@
 const React = require('react')
-const Link = require('react-router').Link;
+const Link = require('react-router').Link
 const CollectionActions = require("../actions/collection_actions")
 const CollectionStore = require("../stores/collection_store")
 const SessionStore = require("../stores/session_store")
@@ -7,16 +7,11 @@ const SessionActions = require("../actions/session_actions")
 const hashHistory = require('react-router').hashHistory
 
 const CollectionsForm = React.createClass({
-  contextTypes: {
-    router: React.PropTypes.object.isRequired
-  },
   getInitialState: function() {
-    let collectionId = this.props.params.collectionId
-    let collection = CollectionStore.find(collectionId) || {}
+    let collection = CollectionStore.find(this.props.params.collectionId) || {}
     return {
-      title: "",
-      user_id: SessionStore.currentUser().id,
-      collection: collection
+      title: collection.title,
+      user_id: SessionStore.currentUser().id
     }
   },
   componentDidMount: function() {
@@ -24,16 +19,30 @@ const CollectionsForm = React.createClass({
     CollectionActions.fetchAllCollections()
   },
   _handleChange: function() {
-    let collectionId = this.props.params.collectionId
-    let collection = CollectionStore.find(collectionId)
-    this.setState({ collection: collection })
+    let collection = CollectionStore.find(this.props.params.collectionId) || {}
+    this.setState({
+      title: collection.title
+    })
   },
-  handleSubmit(event) {
+  createCollection(event) {
     event.preventDefault()
-    delete this.state.collection
-    const collection = Object.assign({}, this.state )
-    CollectionActions.createCollection(collection)
-    hashHistory.push("users/" + collection.user_id)
+    CollectionActions.createCollection(this.state)
+    hashHistory.push("users/" + this.state.user_id)
+  },
+  editCollection(event) {
+    event.preventDefault()
+    let id = this.props.params.collectionId
+    let collection = {
+      title: this.state.title,
+      id: id
+    }
+    CollectionActions.editCollection(collection)
+    hashHistory.push("users/" + this.state.user_id)
+  },
+  deleteCollection(event) {
+    event.preventDefault()
+    CollectionActions.deleteCollection(this.props.params.collectionId)
+    hashHistory.push("users/" + this.state.user_id)
   },
   update(title) {
     return (event) => this.setState({[title]: event.target.value})
@@ -41,37 +50,35 @@ const CollectionsForm = React.createClass({
   formType() {
     return this.props.route.path
   },
-  delete(event) {
-    event.preventDefault()
-    CollectionActions.deleteCollection(this.state.collection.id)
-    hashHistory.push("users/" + this.state.collection.user_id)
-  },
   render: function() {
-    let formName, deleteButton;
+    let formName, deleteButton, submit
     if (this.formType() === "edit") {
-      formName = "Edit " + this.state.collection.title
+      submit = this.editCollection
+      formName = "Edit " + this.state.title
       deleteButton = (
-        <button onClick={this.delete} className="input">
+        <button onClick={this.deleteCollection} className="input">
           Delete
         </button>
       )
     } else {
+      submit = this.createCollection
       formName = "New Collection"
       deleteButton = ""
     }
     return (
       <div className="screen-fade">
         <div className="form-box">
-          <form onSubmit={this.handleSubmit} className="collection-form">
+          <form onSubmit={ submit } className="collection-form">
             <div className="form-header">
               { formName }
-              <div className="dismiss" onClick={this.context.router.goBack}>X</div>
+              <Link to={"users/" + this.state.user_id} className="dismiss">X</Link>
             </div>
             <div className="row">
               <div className="label">Title</div>
               <input className="collection-field input input-field"
                 type="text"
-                onChange={this.update("title")}/>
+                onChange={this.update("title")}
+                value={this.state.title}/>
             </div>
             <div className="row">
               <div className="label">Characteristics</div>
@@ -79,8 +86,8 @@ const CollectionsForm = React.createClass({
                 type="text"/>
             </div>
             <div className="collection-footer">
-              { deleteButton }
               <input className="input" type="submit" value="Save"/>
+              { deleteButton }
             </div>
           </form>
         </div>

@@ -3,11 +3,9 @@ const Link = require('react-router').Link;
 const SessionActions = require('../actions/session_actions');
 const SessionStore = require('../stores/session_store');
 const ErrorStore = require('../stores/error_store');
+const hashHistory = require('react-router').hashHistory
 
 const LoginForm = React.createClass({
-	contextTypes: {
-		router: React.PropTypes.object.isRequired
-	},
   getInitialState() {
     return {
       username: "",
@@ -24,7 +22,7 @@ const LoginForm = React.createClass({
   },
   redirectIfLoggedIn() {
     if (SessionStore.isUserLoggedIn()) {
-      this.context.router.push("/");
+      hashHistory.push("/");
     }
   },
 	handleSubmit(event) {
@@ -48,7 +46,7 @@ const LoginForm = React.createClass({
     return <ul>{ messages }</ul>;
   },
   formType() {
-    return this.props.location.pathname.slice(1);
+    return this.props.route.path;
   },
   update(property) {
     return (event) => this.setState({[property]: event.target.value});
@@ -65,8 +63,7 @@ const LoginForm = React.createClass({
 		return (
 			<div className="screen-fade">
 				<form onSubmit={this.handleSubmit} className="form-box">
-					<div className="form-header logo">
-						Collectize
+					<div className="form-header logo"> Collectize
 						<Link to="/" className="dismiss">X</Link>
 					</div>
 					<div className="form">

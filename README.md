@@ -69,7 +69,7 @@ Collectize is a web application inspired by Pinterest that will use Ruby on Rail
   - [x] `CollectionsIndex`
   - [x] `CollectionThumb`(dummy object)
   - [x] `CollectionForm`
-- [ ] create `Characteristic` model
+- [ ] search Collections by name in navbar
 - [ ] basic styling
 
 ### Phase 3: Items (2 day, W2D2 6pm)
