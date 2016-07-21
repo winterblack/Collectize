@@ -16,8 +16,8 @@ function resetAllCollections(collections) {
 function setCollection(collection){
   _collections[collection.id] = collection
 }
-function removeCollection(collection) {
-  delete _collections[collection.id]
+function removeCollection(id) {
+  delete _collections[id]
 }
 CollectionStore.__onDispatch = function(action) {
   switch(action.type) {
@@ -30,7 +30,7 @@ CollectionStore.__onDispatch = function(action) {
       CollectionStore.__emitChange()
       break;
     case Constants.COLLECTION_REMOVED:
-      removeCollection(action.collection);
+      removeCollection(action.id);
       CollectionStore.__emitChange()
       break;
   }

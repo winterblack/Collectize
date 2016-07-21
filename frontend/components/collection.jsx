@@ -11,22 +11,30 @@ const Collection = React.createClass({
     };
   },
   componentDidMount() {
-    CollectionStore.addListener(this._collectionsChanged)
+    CollectionStore.addListener(this._handleChange)
     CollectionActions.fetchAllCollections()
   },
-  _collectionsChanged() {
-    const collectionId = parseInt(this.props.params.collectionId)
+  _handleChange() {
+    const collectionId = this.props.params.collectionId
     const collection = CollectionStore.find(collectionId)
     this.setState({ collection: collection })
   },
   render() {
-    const collection = this.state.collection
+    let collection = this.state.collection
+    if(collection.id){
+      var characteristics = collection.characteristics.map( characteristic => {
+        return <li key={characteristic.id}>{characteristic.name}</li>
+      })
+    }
     return (
       <div>
         <div className="header">
           <div>{collection.title}</div>
           <Link to={"collections/" + collection.id + "/edit"} className="edit">Edit</Link>
         </div>
+        <ul>
+          { characteristics }
+        </ul>
         {this.props.children}
       </div>
     );

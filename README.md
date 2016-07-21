@@ -11,10 +11,10 @@ Collectize is a web application inspired by Pinterest that will use Ruby on Rail
 - [x] Hosting on Heroku
 - [x] New account creation, login
 - [ ] A production README, replacing this README (**NB**: check out the [sample production README](docs/production_readme.md) -- you'll write this later)
-- [ ] Homepage & Profile
-  - [ ] Smooth, bug-free navigation
-  - [ ] Adequate seed data to demonstrate the site's features
-  - [ ] Adequate CSS styling
+- [x] Homepage & Profile
+  - [x] Smooth, bug-free navigation
+  - [x] Adequate seed data to demonstrate the site's features
+  - [x] Adequate CSS styling
 - [ ] Collections & Items
   - [ ] Smooth, bug-free navigation
   - [ ] Adequate seed data to demonstrate the site's features
@@ -62,22 +62,22 @@ Collectize is a web application inspired by Pinterest that will use Ruby on Rail
 **Objective:** Collections can be created, read, edited and destroyed through the API.
 
 - [x] create `Collection` model
-- [ ] seed database with test data
-- [ ] CRUD API for Collections (`CollectionsController`)
+- [x] seed database with test data
+- [x] CRUD API for Collections (`CollectionsController`)
 - [x] jBuilder views for Collections
 - Collection react components
   - [x] `CollectionsIndex`
   - [x] `CollectionThumb`(dummy object)
   - [x] `CollectionForm`
 - [ ] search Collections by name in navbar
-- [ ] basic styling
+- [x] basic styling
 
 ### Phase 3: Items (2 day, W2D2 6pm)
 
 **Objective:** Items belong to Collections, and can be viewed by collection.
 
+- [x] create `Characteristic` model
 - [ ] create `Item` model
-- [ ] create `Characteristic` model
 - [ ] Item CRUD
 - [ ] Item Form
 - [ ] Item seed data

@@ -1,18 +1,22 @@
 const Dispatcher = require('../dispatcher')
 const Constants = require('../constants')
+const CharacterisicActions = require("./characteristic_actions")
 
 const CollectionActions = {
   fetchAllCollections() {
     $.get('api/collections', CollectionActions._receiveAllCollections)
   },
   createCollection(collection) {
-    $.post('api/collections', {collection: collection}, CollectionActions._receiveCollection)
+    $.post('api/collections', {collection: collection}, (response) => {
+      CollectionActions._receiveCollection(response)
+      CharacterisicActions.createCharacteristics(collection.characteristics, response.id)
+    })
   },
-  deleteCollection(collection_id) {
+  deleteCollection(id) {
     $.ajax({
-      url: 'api/collections/' + collection_id,
+      url: 'api/collections/' + id,
       type: 'DELETE',
-      data: {collection: {collection_id: collection_id}},
+      data: {id: id},
       success: CollectionActions._removeCollection
     })
   },
@@ -36,10 +40,10 @@ const CollectionActions = {
       collection: collection
     })
   },
-  _removeCollection(collection) {
+  _removeCollection(id) {
     Dispatcher.dispatch({
       type: Constants.COLLECTION_REMOVED,
-      collection: collection
+      id: id
     })
   }
 }

@@ -26,6 +26,20 @@
    background: rgba(0,0,0,0.8);
  }
 
+ .collection-screen {
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   align-items: center;
+   position: fixed;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   background: rgba(0,0,0,0.8);
+   padding-top: 120px;
+ }
+
  .form-box {
    border-radius: 6px;
    background: white;
@@ -61,17 +75,22 @@
  .row {
    display: flex;
    flex-direction: row;
-   height: 60px;
-   align-items: center;
    border-top: 1px solid #ccc;
+ }
+
+ .column {
+   display: flex;
+   flex-direction: column;
+   width: 300px;
  }
 
  .label {
    font-size: 14px;
    font-weight: bold;
    padding-left: 20px;
+   height: 60px;
    line-height: 60px;
-   width: 50%;
+   width: 280px;
  }
 
  .input {
@@ -96,8 +115,22 @@
  }
 
  .collection-field {
-   width: 50%;
+   width: 248px;
    background: #eee;
+   border: 1px solid black;
+   border-radius: 6px;
+   height: 30px;
+   margin: 15px 15px 0 15px;
+   padding: 0 10px;
+ }
+
+ .add-characteristic {
+   width: 268px;
+   background: #eee;
+   border: 1px solid #ccc;
+   border-radius: 6px;
+   height: 30px;
+   margin: 15px 15px 0 15px;
  }
 
  .submit-button {

@@ -12,8 +12,11 @@ const App = require("./components/app")
 const Homepage = require("./components/homepage")
 const LoginForm = require("./components/login_form")
 const Profile = require("./components/profile")
-const CollectionForm = require("./components/collection_form")
+const NewCollection = require("./components/new_collection")
+const EditCollection = require("./components/edit_collection")
 const Collection = require("./components/collection")
+
+const CollectionForm = require("./components/collection_form")
 //Auth
 const SessionActions = require("./actions/session_actions")
 const SessionStore = require("./stores/session_store")
@@ -26,10 +29,10 @@ const appRouter = (
         <Route path="signup" component={ LoginForm }/>
       </Route>
       <Route path="users/:userId" component={ Profile }>
-        <Route path="newcollection" component={ CollectionForm }/>
+        <Route path="newcollection" component={ NewCollection }/>
       </Route>
       <Route path="collections/:collectionId" component={ Collection }>
-        <Route path="edit" component={ CollectionForm }/>
+        <Route path="edit" component={ EditCollection }/>
       </Route>
     </Route>
   </Router>

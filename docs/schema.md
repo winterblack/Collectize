@@ -12,7 +12,7 @@ column name   | data type | details
 --------------|-----------|-----------------------
 id            | integer   | not null, primary key
 title         | string    | not null
-image         | string    | not null
+image_url     | string    | not null
 collection_id | integer   | not null, foreign key, indexed
 
 ## Characteristics
@@ -23,12 +23,12 @@ name          | string    | not null
 collection_id | integer   | not null, foreign key, indexed
 
 ## Values
-column name  | data type | details
--------------|-----------|-----------------------
-id           | integer   | not null, primary key
-value        | string    | not null
-valuable_id  | integer   | not null, foreign key (polymorphic), indexed
-
+column name       | data type | details
+------------------|-----------|-----------------------
+id                | integer   | not null, primary key
+value             | string    | not null
+user_id           | integer   | not null, foreign key, indexed
+characteristic_id | integer   | not null, foreign key, indexed
 
 ## Users
 column name     | data type | details

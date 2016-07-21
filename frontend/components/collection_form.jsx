@@ -7,21 +7,23 @@ const SessionActions = require("../actions/session_actions")
 const hashHistory = require('react-router').hashHistory
 
 const CollectionsForm = React.createClass({
-  getInitialState: function() {
+  getInitialState() {
     let collection = CollectionStore.find(this.props.params.collectionId) || {}
     return {
       title: collection.title,
-      user_id: SessionStore.currentUser().id
+      user_id: SessionStore.currentUser().id,
+      characteristics: collection.characteristics || [{}]
     }
   },
-  componentDidMount: function() {
+  componentDidMount() {
     CollectionStore.addListener(this._handleChange)
     CollectionActions.fetchAllCollections()
   },
-  _handleChange: function() {
+  _handleChange() {
     let collection = CollectionStore.find(this.props.params.collectionId) || {}
     this.setState({
-      title: collection.title
+      title: collection.title,
+      characteristics: collection.characteristics || [{}]
     })
   },
   createCollection(event) {
@@ -44,14 +46,33 @@ const CollectionsForm = React.createClass({
     CollectionActions.deleteCollection(this.props.params.collectionId)
     hashHistory.push("users/" + this.state.user_id)
   },
-  update(title) {
-    return (event) => this.setState({[title]: event.target.value})
+  updateTitle() {
+    return (event) => this.setState({title: event.target.value})
+  },
+  updateCharacteristic(key) {
+    return (event) => {
+      let characteristics = this.state.characteristics
+      characteristics[key].name = event.target.value
+      this.setState({characteristics: characteristics})
+    }
+  },
+  addCharacteristic() {
+    let characteristics = this.state.characteristics
+    characteristics.push({})
+    this.setState({characteristics: characteristics})
+    this.fieldAdded = true
+  },
+  componentDidUpdate(prevProps, prevState) {
+    if(this.fieldAdded){
+      $("input:last").select()
+      this.fieldAdded = false
+    }
   },
   formType() {
     return this.props.route.path
   },
-  render: function() {
-    let formName, deleteButton, submit
+  render() {
+    let formName, deleteButton, submit, characteristics
     if (this.formType() === "edit") {
       submit = this.editCollection
       formName = "Edit " + this.state.title
@@ -60,13 +81,25 @@ const CollectionsForm = React.createClass({
           Delete
         </button>
       )
+      characteristics = Object.keys(this.state.characteristics).map( key => {
+        return <div className="" key={key}>
+          {this.state.characteristics[key].name}
+        </div>
+      })
     } else {
       submit = this.createCollection
       formName = "New Collection"
       deleteButton = ""
+      characteristics = Object.keys(this.state.characteristics).map( key => {
+        return <input className="collection-field"
+          type="text"
+          onChange={this.updateCharacteristic(key)}
+          value={this.state.characteristics[key].name}
+          key={key}/>
+      })
     }
     return (
-      <div className="screen-fade">
+      <div className="collection-screen">
         <div className="form-box">
           <form onSubmit={ submit } className="collection-form">
             <div className="form-header">
@@ -75,18 +108,21 @@ const CollectionsForm = React.createClass({
             </div>
             <div className="row">
               <div className="label">Title</div>
-              <input className="collection-field input input-field"
+              <input className="collection-field"
                 type="text"
-                onChange={this.update("title")}
+                onChange={this.updateTitle()}
                 value={this.state.title}/>
             </div>
             <div className="row">
               <div className="label">Characteristics</div>
-              <input className="collection-field input input-field"
-                type="text"/>
+              <div className="column">
+                { characteristics }
+                <div className="add-characteristic"
+                     onClick={this.addCharacteristic}/>
+              </div>
             </div>
             <div className="collection-footer">
-              <input className="input" type="submit" value="Save"/>
+              <button className="input " type="submit">Save</button>
               { deleteButton }
             </div>
           </form>
