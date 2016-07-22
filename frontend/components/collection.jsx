@@ -26,12 +26,11 @@ const Collection = React.createClass({
         return <li className="item" key={characteristic.id}>{characteristic.name}</li>
       })
       var items = collection.items.map( item => {
-        let image = {backgroundImage: "url(" + item.image_url + ")"}
-        return <div to={"items/" + item.id}
+        return <Link to={"collections/" + collection.id + "/items/" + item.id}
                     className="item-thumb"
                     key={item.id}>
           <img src={item.image_url}/>
-        </div>
+        </Link>
       })
     }
     return (

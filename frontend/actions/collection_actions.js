@@ -6,6 +6,9 @@ const CollectionActions = {
   fetchAllCollections() {
     $.get('api/collections', CollectionActions._receiveAllCollections)
   },
+  fetchSingleCollection(id) {
+    $.get('api/collection' + id, CollectionActions._receiveCollection)
+  },
   createCollection(collection) {
     $.post('api/collections', {collection: collection}, (response) => {
       CollectionActions._receiveCollection(response)

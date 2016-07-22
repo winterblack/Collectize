@@ -16,6 +16,7 @@ const NewCollection = require("./components/new_collection")
 const EditCollection = require("./components/edit_collection")
 const Collection = require("./components/collection")
 const NewItem = require("./components/new_item")
+const EditItem = require("./components/edit_item")
 
 const CollectionForm = require("./components/collection_form")
 //Auth
@@ -35,6 +36,7 @@ const appRouter = (
       <Route path="collections/:collectionId" component={ Collection }>
         <Route path="edit" component={ EditCollection }/>
         <Route path="newitem" component={ NewItem }/>
+        <Route path="items/:itemId" component={ EditItem }/>
       </Route>
     </Route>
   </Router>

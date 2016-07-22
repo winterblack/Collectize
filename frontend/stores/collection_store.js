@@ -2,7 +2,10 @@ const Store = require('flux/utils').Store
 const Constants = require('../constants')
 const Dispatcher = require('../dispatcher')
 const CollectionStore = new Store(Dispatcher)
-var _collections = {}
+let _collections = {}
+let _collection = {}
+let _items = {}
+let _characteristics = {}
 
 CollectionStore.all = function() {
   return _collections
@@ -13,8 +16,11 @@ CollectionStore.find = function(collectionId) {
 function resetAllCollections(collections) {
   _collections = collections
 }
-function setCollection(collection){
-  _collections[collection.id] = collection
+function setCollection(data){
+  _collections[collection.id] = data.collection
+  _collection = data.collection
+  _items = data.items
+  _characteristics = data.characteristics
 }
 function removeCollection(id) {
   delete _collections[id]

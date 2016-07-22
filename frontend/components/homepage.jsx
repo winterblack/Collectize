@@ -11,13 +11,16 @@ const Homepage = React.createClass({
     };
   },
   componentDidMount() {
-    CollectionStore.addListener(this._handleChange)
+    this.collectionListener = CollectionStore.addListener(this._handleChange)
     CollectionActions.fetchAllCollections()
   },
   _handleChange() {
     this.setState({
       collections: CollectionStore.all()
     })
+  },
+  componentWillUnmount: function() {
+    this.collectionListener.remove()
   },
   render() {
     return (

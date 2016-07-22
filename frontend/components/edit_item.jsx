@@ -1,9 +1,8 @@
 const React = require('react')
 const hashHistory = require('react-router').hashHistory
-const Link = require('react-router').Link
 const ItemActions = require("../actions/item_actions")
 
-const NewItem = React.createClass({
+const EditItem = React.createClass({
   getInitialState: function() {
     let collection = CollectionStore.find(this.props.params.collectionId) || {}
     let characteristics = collection.characteristics || []
@@ -11,10 +10,9 @@ const NewItem = React.createClass({
     for(let i = 0; i < characteristics.length; i ++) {
       values.push({ characteristic_id: characteristics[i].id })
     }
+    let item = CollectionStore.findItem(this.props.params.itemId) || {}
     return {
-      title: "",
-      image_url: "",
-      collection_id: collection.id,
+      item: item,
       characteristics: characteristics,
       values: values
     };
@@ -30,17 +28,18 @@ const NewItem = React.createClass({
     for(let i = 0; i < characteristics.length; i ++) {
       values.push({ characteristic_id: characteristics[i].id })
     }
+    let item = CollectionStore.findItem(this.props.params.itemId)
     this.setState({
-      collection_id: collection.id,
+      item: item,
       characteristics: characteristics,
       values: values
     })
   },
   submit(event) {
     event.preventDefault()
-    ItemActions.createItem(this.state)
+    ItemActions.editItem(this.state.item)
     CollectionActions.fetchAllCollections()
-    hashHistory.push("collections/" + this.state.collection_id)
+    hashHistory.push("collections/" + this.state.item.collection_id)
     },
   updateField(field) {
     return (event) => this.setState({[field]: event.target.value})
@@ -52,14 +51,20 @@ const NewItem = React.createClass({
       this.setState({values: values})
     }
   },
+  deleteItem(event) {
+    event.preventDefault()
+    ItemActions.deleteItem(thi.state.item.id)
+    CollectionActions.fetchAllCollections()
+    hashHistory.push("collections/" + this.state.item.collection_id)
+  },
   render: function() {
+    let item = this.state.item
     return (
       <div className="collection-screen">
         <div className="form-box">
           <form onSubmit={this.submit} className="collection-form">
             <div className="form-header">
-              New Item
-              <Link to={"collections/" + this.state.collection_id} className="dismiss">X</Link>
+              Edit {item.title}
             </div>
             <div className="row">
               <div className="label">Title</div>
@@ -90,6 +95,9 @@ const NewItem = React.createClass({
               }
             <div className="collection-footer">
               <button className="input" type="submit">Save</button>
+                <button onClick={this.deleteItem} className="input">
+                  Delete
+                </button>
             </div>
           </form>
         </div>
@@ -99,4 +107,4 @@ const NewItem = React.createClass({
 
 })
 
-module.exports = NewItem
+module.exports = EditItem

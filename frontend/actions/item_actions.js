@@ -7,6 +7,9 @@ const ItemActions = {
   },
   deleteItem(id) {
     $.ajax({ url: 'api/items/' + id, type: 'DELETE' })
+  },
+  editItem(item) {
+    $.ajax({ url: 'api/items' + item.id, type: 'PATCH' })
   }
 };
 
