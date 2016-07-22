@@ -1,13 +1,20 @@
-@collections.each do |collection|
+@collections.each { |collection|
   json.set! collection.id, {
     id: collection.id,
     user_id: collection.user_id,
     title: collection.title,
-    characteristics: collection.characteristics.map do |characteristic|
+    characteristics: collection.characteristics.map { |characteristic|
       {
-        name: characteristic.name,
-        id: characteristic.id
+        id: characteristic.id,
+        name: characteristic.name
       }
-    end
+    },
+    items: collection.items.map { |item|
+      {
+        id: item.id,
+        title: item.title,
+        image_url: item.image_url
+      }
+    }
   }
-end
+}

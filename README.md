@@ -77,7 +77,7 @@ Collectize is a web application inspired by Pinterest that will use Ruby on Rail
 **Objective:** Items belong to Collections, and can be viewed by collection.
 
 - [x] create `Characteristic` model
-- [ ] create `Item` model
+- [x] create `Item` model
 - [ ] Item CRUD
 - [ ] Item Form
 - [ ] Item seed data

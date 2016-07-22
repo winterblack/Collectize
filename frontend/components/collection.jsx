@@ -23,7 +23,15 @@ const Collection = React.createClass({
     let collection = this.state.collection
     if(collection.id){
       var characteristics = collection.characteristics.map( characteristic => {
-        return <li key={characteristic.id}>{characteristic.name}</li>
+        return <li className="item" key={characteristic.id}>{characteristic.name}</li>
+      })
+      var items = collection.items.map( item => {
+        let image = {backgroundImage: "url(" + item.image_url + ")"}
+        return <div to={"items/" + item.id}
+                    className="item-thumb"
+                    key={item.id}>
+          <img src={item.image_url}/>
+        </div>
       })
     }
     return (
@@ -32,9 +40,14 @@ const Collection = React.createClass({
           <div>{collection.title}</div>
           <Link to={"collections/" + collection.id + "/edit"} className="edit">Edit</Link>
         </div>
-        <ul>
+        <ul className="list">
           { characteristics }
         </ul>
+        <div>
+          { items }
+        </div>
+        <Link to={"collections/" + this.state.collection.id + "/newitem"}
+          className="item-thumb new-item">+</Link>
         {this.props.children}
       </div>
     );

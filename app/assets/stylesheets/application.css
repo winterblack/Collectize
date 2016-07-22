@@ -290,3 +290,31 @@
   margin-left: 20px;
   font-size: 15px;
 }
+
+.list {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-bottom: 1px solid #ddd;
+  padding-left: 15px;
+}
+
+.item {
+  margin: 5px;
+}
+
+.item-thumb {
+  float: left;
+  height: 220px;
+  width: 220px;
+  margin: 10px;
+  text-align: center;
+  line-height: 220px;
+  color: white;
+  border-radius: 6px;
+}
+
+.new-item {
+  background: black;
+  font-size: 70px;
+}
