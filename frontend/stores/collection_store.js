@@ -1,43 +1,47 @@
-const Store = require('flux/utils').Store
-const Constants = require('../constants')
-const Dispatcher = require('../dispatcher')
+const Store = require("flux/utils").Store
+const Dispatcher = require("../dispatcher")
 const CollectionStore = new Store(Dispatcher)
-let _collections = {}
+const SessionStore = require("./session_store")
+
+let _collections = []
+let _userCollections = []
 let _collection = {}
-let _items = {}
-let _characteristics = {}
 
 CollectionStore.all = function() {
   return _collections
 }
-CollectionStore.find = function(collectionId) {
-  return _collections[collectionId]
+CollectionStore.userCollections = function() {
+  return _userCollections
 }
-function resetAllCollections(collections) {
+CollectionStore.one = function() {
+  return _collection
+}
+function resetCollections(collections) {
   _collections = collections
 }
-function setCollection(data){
-  _collections[collection.id] = data.collection
-  _collection = data.collection
-  _items = data.items
-  _characteristics = data.characteristics
+function resetUserCollections(collections) {
+  _userCollections = collections
 }
-function removeCollection(id) {
-  delete _collections[id]
+function resetCollection(collection) {
+  _collection = collection
 }
+
 CollectionStore.__onDispatch = function(action) {
-  switch(action.type) {
-    case Constants.COLLECTIONS_RECEIVED:
-      resetAllCollections(action.collections);
-      CollectionStore.__emitChange()
+  switch (action.type) {
+    case "collections received":
+      resetCollections(action.collections);
+      CollectionStore.__emitChange();
       break;
-    case Constants.COLLECTION_RECEIVED:
-      setCollection(action.collection);
-      CollectionStore.__emitChange()
+    case "user collections received":
+      resetUserCollections(action.collections);
+      CollectionStore.__emitChange();
       break;
-    case Constants.COLLECTION_REMOVED:
-      removeCollection(action.id);
-      CollectionStore.__emitChange()
+    case "collection received":
+      resetCollection(collection);
+      CollectionStore.__emitChange();
+      break;
+    case "collection removed":
+      CollectionStore.__emitChange();
       break;
   }
 }

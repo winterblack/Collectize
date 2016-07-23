@@ -1,36 +1,35 @@
-const React = require('react');
+const React = require('react')
 const SessionStore = require("../stores/session_store")
+const CollectionStore = require("../stores/collection_store")
+const CollectionActions = require("../actions/collection_actions")
 const CollectionIndex = require("./collection_index")
-const Link = require("react-router").Link
-const SessionActions = require("../actions/session_actions")
 
 const Profile = React.createClass({
   getInitialState() {
     return {
-      username: SessionStore.currentUser().username,
-      collections: SessionStore.collections()
-    }
+      user: SessionStore.currentUser(),
+      collections: CollectionStore.userCollections()
+    };
   },
   componentDidMount() {
-    SessionStore.addListener(this._handleChange)
-    SessionActions.resetCurrentUser()
+    CollectionStore.addListener(this.resetState)
+    CollectionActions.fetchUserCollections()
   },
-  _handleChange() {
+  resetState() {
     this.setState({
-      collections: SessionStore.collections()
+      collections: CollectionStore.userCollections()
     })
   },
   render() {
     return (
       <div>
-        <div className="header">{this.state.username}</div>
-        <CollectionIndex collections={this.state.collections}/>
-        <Link to={"users/" + SessionStore.currentUser().id + "/newcollection"} className="collection-thumb new-collection">+</Link>
-        {this.props.children}
+        <div className="profile-header">{ this.state.user.username }</div>
+        <CollectionIndex collections={ this.state.collections } />
+        { this.props.children }
       </div>
-    );
+    )
   }
 
-});
+})
 
-module.exports = Profile;
+module.exports = Profile

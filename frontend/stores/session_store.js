@@ -1,47 +1,33 @@
-const Dispatcher = require('../dispatcher')
-const Store = require('flux/utils').Store
-const Constants = require('../constants')
+const Dispatcher = require("../dispatcher")
+const Store = require("flux/utils").Store
 
 const SessionStore = new Store(Dispatcher)
 
 let _currentUser = {}
-let _userCollections = {}
 
-const _resetCurrentUser = function(currentUser) {
-  _currentUser = currentUser
-  _userCollections = currentUser.collections || {}
+SessionStore.currentUser = function() {
+  return _currentUser
 }
-const _logout = function() {
+
+function _resetCurrentUser(user) {
+  _currentUser = user
+}
+
+function _logout() {
   _currentUser = {}
 }
-const _setCollection = function(collection) {
-  _userCollections[collection.id] = collection
-}
 
-SessionStore.__onDispatch = action => {
+SessionStore.__onDispatch = function(action) {
   switch(action.type) {
-    case Constants.LOGIN:
-      _resetCurrentUser(action.currentUser);
+    case "login":
+      _resetCurrentUser(action.user);
       SessionStore.__emitChange();
       break;
-    case Constants.LOGOUT:
-    	_logout()
+    case "logout":
+      _logout();
       SessionStore.__emitChange();
-      break;
-    case Constants.COLLECTION_RECEIVED:
-      _setCollection(action.collection);
-      SessionStore.__emitChange()
       break;
   }
-}
-SessionStore.currentUser = function() {
-  return Object.assign({}, _currentUser)
-}
-SessionStore.isUserLoggedIn = function() {
-  return !!_currentUser.id
-}
-SessionStore.collections = function() {
-  return Object.assign({}, _userCollections)
 }
 
 module.exports = SessionStore

@@ -1,44 +1,28 @@
-const Store = require('flux/utils').Store;
-const Dispatcher = require('../dispatcher');
-const Constants = require('../constants');
-const ErrorStore = new Store(Dispatcher);
+const Store = require("flux/utils").Store
+const Dispatcher = require("../dispatcher")
+const ErrorStore = new Store(Dispatcher)
 
-let _errors = {};
-let _form = "";
+let _errors = {}
 
-function setErrors(action){
-  _errors = action.errors;
-  _form = action.form;
-  ErrorStore.__emitChange();
+function setErrors(errors) {
+  _errors = errors
 }
-function clearErrors(){
-  _errors = {};
-  _form = "";
-  ErrorStore.__emitChange();
+
+ErrorStore.errors = function() {
+  return _errors
 }
-ErrorStore.__onDispatch = function (action) {
+
+ErrorStore.clearErrors = function() {
+  _errors = {}
+}
+
+ErrorStore.__onDispatch = function(action) {
   switch (action.type) {
-    case Constants.SET_ERRORS:
-      setErrors(action);
-      break;
-    case Constants.CLEAR_ERRORS:
-      clearErrors();
+    case "set errors":
+      setErrors(action.errors)
+      ErrorStore.__emitChange()
       break;
   }
-};
-ErrorStore.formErrors = function (form) {
-  if (form !== _form) {
-    return {};
-  }
-  const result = {};
-  for (let field in _errors) {
-    result[field] = Array.from(_errors[field]);
-  }
+}
 
-  return result;
-};
-ErrorStore.form = function() {
-  return _form;
-};
-
-module.exports = ErrorStore;
+module.exports = ErrorStore

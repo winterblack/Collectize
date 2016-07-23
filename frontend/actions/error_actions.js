@@ -1,20 +1,12 @@
-const AppDispatcher = require('../dispatcher');
-const Constants = require('../constants');
+const Dispatcher = require("../dispatcher")
 
 const ErrorActions = {
-  setErrors(form, errors) {
-    AppDispatcher.dispatch({
-      type: Constants.SET_ERRORS,
-      form: form,
+  setErrors(errors) {
+    Dispatcher.dispatch({
+      type: "set errors",
       errors: errors
-    });
-  },
-
-  clearErrors() {
-    AppDispatcher.dispatch({
-      type: Constants.CLEAR_ERRORS
-    });
+    })
   }
-};
+}
 
-module.exports = ErrorActions;
+module.exports = ErrorActions

@@ -1,39 +1,46 @@
-const Dispatcher = require('../dispatcher')
-const Constants = require('../constants')
-const SessionApiUtil = require('../util/session_api_util')
-const ErrorActions = require('./error_actions')
-const hashHistory = require('react-router').hashHistory
+const Dispatcher = require("../dispatcher")
+const hashHistory = require("react-router").hashHistory
+const ErrorActions = require("../actions/error_actions")
 
 const SessionActions = {
-  signUp(formData){
-    SessionApiUtil.signUp(
-      formData,
-      SessionActions.receiveCurrentUser,
-      ErrorActions.setErrors)
-  },
-  logIn(formData){
-    SessionApiUtil.logIn(
-      formData,
-      SessionActions.receiveCurrentUser,
-      ErrorActions.setErrors)
-  },
-  logOut() {
-    SessionApiUtil.logOut(SessionActions.removeCurrentUser)
-  },
-  resetCurrentUser(){
-    $.get("api/user", SessionActions.receiveCurrentUser)
-  },
-  receiveCurrentUser(currentUser) {
-    Dispatcher.dispatch({
-      type: Constants.LOGIN,
-      currentUser: currentUser
+  signup(credentials) {
+    $.ajax({
+      url: 'api/user',
+      type: 'post',
+      dataType: 'json',
+      data: {user: credentials},
+      success: SessionActions._receiveCurrentUser,
+      error(xhr) { ErrorActions.setErrors(xhr.responseJSON) }
     })
   },
-  removeCurrentUser() {
-    Dispatcher.dispatch({
-      type: Constants.LOGOUT
+  login(credentials) {
+    $.ajax({
+      url: 'api/session',
+      type: 'post',
+      dataType: 'json',
+      data: {user: credentials},
+      success: SessionActions._receiveCurrentUser,
+      error(xhr) { ErrorActions.setErrors(xhr.responseJSON)}
     })
-    hashHistory.push("/login")
+  },
+  logout() {
+    $.ajax({
+      url: 'api/session',
+      type: 'delete',
+      success: SessionActions._removeCurrentUser
+    })
+  },
+  _receiveCurrentUser(user) {
+    Dispatcher.dispatch({
+      type: "login",
+      user: user
+    })
+  },
+  _removeCurrentUser() {
+    Dispatcher.dispatch({
+      type: "logout"
+    })
+    hashHistory.push("login")
   }
 }
 

@@ -2,7 +2,6 @@ const React = require('react')
 const CollectionStore = require("../stores/collection_store")
 const CollectionActions = require("../actions/collection_actions")
 const CollectionIndex = require("./collection_index")
-const CollectionForm = require("./collection_form")
 
 const Homepage = React.createClass({
   getInitialState() {
@@ -11,10 +10,10 @@ const Homepage = React.createClass({
     };
   },
   componentDidMount() {
-    this.collectionListener = CollectionStore.addListener(this._handleChange)
+    this.collectionListener = CollectionStore.addListener(this.resetState)
     CollectionActions.fetchAllCollections()
   },
-  _handleChange() {
+  resetState() {
     this.setState({
       collections: CollectionStore.all()
     })

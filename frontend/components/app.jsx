@@ -1,5 +1,4 @@
 const React = require('react')
-const SessionActions = require("../actions/session_actions")
 const Navbar = require("./navbar")
 
 const App = React.createClass({
@@ -12,6 +11,7 @@ const App = React.createClass({
       </div>
     )
   }
+
 })
 
 module.exports = App

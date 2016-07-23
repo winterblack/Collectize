@@ -1,27 +1,25 @@
 const React = require('react')
-const SessionActions = require("../actions/session_actions")
+const Link = require('react-router').Link
 const SessionStore = require("../stores/session_store")
-const Link = require("react-router").Link
-const hashHistory = require('react-router').hashHistory
+const SessionActions = require("../actions/session_actions")
 
 const Navbar = React.createClass({
-  _handleLogOut(){
-    SessionActions.logOut()
-  },
-  render: function() {
+  render() {
+    let currentUser = SessionStore.currentUser()
     let user, session;
-    let username = SessionStore.currentUser().username
-    if (username) {
-      user = <Link to={"users/" + SessionStore.currentUser().id} className="profile-link">{username}</Link>
-      session = <input className="logout" type="submit" value="X" onClick={this._handleLogOut}/>
+    if (currentUser.id) {
+      user = <Link to={"users/" + currentUser.id} className="nav-profile">
+        {currentUser.username}
+      </Link>
+      session = <button className="logout" onClick={SessionActions.logout}>X</button>
     } else {
-      user = <Link to="signup" className="signup">Sign Up</Link>
-      session = <Link to="login" className="login">Log In</Link>
+      user = <Link to="signup" className="nav-signup">Sign Up</Link>
+      session = <Link to="login" className="nav-login">Log In</Link>
     }
     return (
       <div className="navbar">
-        <Link to="/" className="homepage-link">C</Link>
-        <div className="search">Search</div>
+        <Link to="/" className="nav-home">C</Link>
+        <input className="search-bar" type="text" placeholder="Search"/>
         { user }
         { session }
       </div>
