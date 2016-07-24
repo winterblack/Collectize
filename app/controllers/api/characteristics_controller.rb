@@ -2,7 +2,7 @@ class Api::CharacteristicsController < ApplicationController
 
   def create
     @characteristic = Characteristic.create!(characteristic_params)
-    render :show
+    render json: @characteristic
   end
 
   def show
@@ -12,7 +12,7 @@ class Api::CharacteristicsController < ApplicationController
   def destroy
     @characteristic = Characteristic.find(params[:id])
     @characteristic.destroy
-    render :show
+    render json: @characteristic
   end
 
   private

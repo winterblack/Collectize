@@ -1,1 +1,1 @@
-json.array! @collections, :id, :title
+json.partial! 'api/collections/collections', collections: @collections

@@ -12,6 +12,7 @@ class Api::CollectionsController < ApplicationController
   def update
     @collection = Collection.find(params[:id])
     @collection.update(collection_params)
+    render :show
   end
 
   def destroy

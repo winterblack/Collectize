@@ -1,46 +1,37 @@
 const Store = require("flux/utils").Store
 const Dispatcher = require("../dispatcher")
 const CollectionStore = new Store(Dispatcher)
-const SessionStore = require("./session_store")
 
-let _collections = []
-let _userCollections = []
-let _collection = {}
+let _collections = {}
 
 CollectionStore.all = function() {
   return _collections
 }
-CollectionStore.userCollections = function() {
-  return _userCollections
+CollectionStore.find = function(id) {
+  return _collections[id]
 }
-CollectionStore.one = function() {
-  return _collection
-}
-function resetCollections(collections) {
+function _resetCollections(collections) {
   _collections = collections
 }
-function resetUserCollections(collections) {
-  _userCollections = collections
+function _resetCollection(collection) {
+  _collections[collection.id] = collection
 }
-function resetCollection(collection) {
-  _collection = collection
+function _removeCollection(id) {
+  delete _collections[id]
 }
 
 CollectionStore.__onDispatch = function(action) {
   switch (action.type) {
     case "collections received":
-      resetCollections(action.collections);
-      CollectionStore.__emitChange();
-      break;
-    case "user collections received":
-      resetUserCollections(action.collections);
+      _resetCollections(action.collections);
       CollectionStore.__emitChange();
       break;
     case "collection received":
-      resetCollection(collection);
+      _resetCollection(action.collection);
       CollectionStore.__emitChange();
       break;
     case "collection removed":
+      _removeCollection(action.id);
       CollectionStore.__emitChange();
       break;
   }

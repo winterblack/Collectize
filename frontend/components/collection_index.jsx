@@ -1,16 +1,19 @@
 const React = require('react')
+const Link = require('react-router').Link
 
 const CollectionIndex = React.createClass({
 
   render: function() {
+    var collections = this.props.collections
     return (
       <ul>
         {
-          this.props.collections.map( collection => {
+          Object.keys(collections).map( key => {
             return (
-              <li className="collection-thumb" key={ collection.id }>
-                { collection.title }
-              </li>
+              <Link to={"collections/" + key} key={key}
+                className="collection-thumb">
+                { collections[key].title}
+               </Link>
             )
           })
         }

@@ -13,13 +13,13 @@ const Homepage = React.createClass({
     this.collectionListener = CollectionStore.addListener(this.resetState)
     CollectionActions.fetchAllCollections()
   },
+  componentWillUnmount: function() {
+    this.collectionListener.remove()
+  },
   resetState() {
     this.setState({
       collections: CollectionStore.all()
     })
-  },
-  componentWillUnmount: function() {
-    this.collectionListener.remove()
   },
   render() {
     return (

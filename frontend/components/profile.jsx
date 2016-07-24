@@ -1,23 +1,26 @@
 const React = require('react')
+const Link = require ('react-router').Link
 const SessionStore = require("../stores/session_store")
-const CollectionStore = require("../stores/collection_store")
-const CollectionActions = require("../actions/collection_actions")
+const SessionActions = require("../actions/session_actions")
 const CollectionIndex = require("./collection_index")
 
 const Profile = React.createClass({
   getInitialState() {
     return {
       user: SessionStore.currentUser(),
-      collections: CollectionStore.userCollections()
+      collections: SessionStore.collections()
     };
   },
   componentDidMount() {
-    CollectionStore.addListener(this.resetState)
-    CollectionActions.fetchUserCollections()
+    this.sessionListener = SessionStore.addListener(this.resetState)
+    SessionActions.resetCurrentUser()
+  },
+  componentWillUnmount: function() {
+    this.sessionListener.remove()
   },
   resetState() {
     this.setState({
-      collections: CollectionStore.userCollections()
+      collections: SessionStore.collections()
     })
   },
   render() {
@@ -25,6 +28,8 @@ const Profile = React.createClass({
       <div>
         <div className="profile-header">{ this.state.user.username }</div>
         <CollectionIndex collections={ this.state.collections } />
+        <Link to={"users/" + this.state.user.id + "/newcollection"}
+          className="new-collection">+</Link>
         { this.props.children }
       </div>
     )

@@ -27,25 +27,26 @@
 .search-bar {
   flex-grow: 2;
   max-width: 510px;
+  border: 1px solid #ddd;
   border-left: none;
   border-radius: 0 6px 6px 0;
   background: #eee;
   margin-right: 10px;
   height: 30px;
-  border: 1px solid #ddd;
   padding: 0 10px;
 }
 
 .nav-home {
   margin-left: 10px;
   border-radius: 6px 0 0 6px;
-  color: #c00;
+  color: red;
   height: 30px;
   border: 1px solid #ddd;
   padding: 0 10px;
   line-height: 30px;
   white-space: nowrap;
   text-align: center;
+  font-family: lobster;
 }
 
 .nav-signup {
@@ -85,7 +86,7 @@
   background: rgba(0, 0, 0, 0.8);
 }
 
-.login-form-box {
+.form-box {
   background: white;
   border-radius: 6px;
 }
@@ -105,6 +106,7 @@
   color: #888;
   padding: 0 20px;
   font-size: 20px;
+  cursor: pointer;
 }
 
 .login-form {
@@ -117,7 +119,7 @@
   font-size: 14px;
 }
 
-.login-header {
+.form-header {
   height: 60px;
   line-height: 60px;
   font-size: 30px;
@@ -203,6 +205,176 @@
   margin: 10px;
   text-align: center;
   background: black;
+  color: white;
+  border-radius: 6px;
+}
+
+.profile-header {
+  display: flex;
+  height: 60px;
+  line-height: 60px;
+  font-size: 30px;
+  padding-left: 20px;
+  background: white;
+  border-bottom: 1px solid #ddd;
+}
+
+.new-collection {
+  float: left;
+  width: 220px;
+  height: 220px;
+  line-height: 220px;
+  font-size: 110px;
+  margin: 10px;
+  text-align: center;
+  background: black;
+  color: white;
+  border-radius: 6px;
+}
+
+.collection-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,0.8);
+  padding-top: 120px;
+}
+
+.collection-form {
+  background: white;
+  width: 600px;
+  border-radius: 6px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  border-top: 1px solid #ccc;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: bold;
+  padding-left: 20px;
+  height: 60px;
+  line-height: 60px;
+  width: 280px;
+}
+
+.collection-field {
+  width: 248px;
+  background: #eee;
+  border: 1px solid black;
+  border-radius: 6px;
+  height: 30px;
+  margin: 15px 15px 0 15px;
+  padding: 0 10px;
+}
+
+.characteristic-row {
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+  align-items: center;
+  padding-left: 15px;
+  margin-top: 10px;
+}
+
+.delete-characteristic {
+  height: 30px;
+  line-height: 30px;
+  padding: 0 10px;
+  border-radius: 6px 0 0 6px;
+  background: #888;
+  color: #eee;
+  cursor: pointer;
+}
+
+.characteristic {
+  height: 30px;
+  line-height: 30px;
+  width: 100%;
+  padding-left: 10px;
+  border-radius: 0 6px 6px 0;
+  border-left: 1px solid #eee;
+  margin-right: 15px;
+  background: #888;
+  color: #eee;
+}
+
+.add-characteristic {
+  width: 268px;
+  background: #eee;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  height: 30px;
+  margin: 15px 15px 0 15px;
+}
+
+.collection-header {
+  display: flex;
+  height: 60px;
+  line-height: 60px;
+  font-size: 30px;
+  padding-left: 20px;
+  background: white;
+  border-bottom: 1px solid #ddd;
+}
+
+.collection-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row-reverse;
+  height: 60px;
+}
+
+.save {
+  margin: 0 20px;
+  border: 1px solid black;
+  padding: 0 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 14px;
+  height: 30px;
+  line-height: 30px;
+}
+
+.delete-button {
+  margin: 0 20px;
+  border: 1px solid black;
+  padding: 0 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 14px;
+  height: 30px;
+  line-height: 30px;
+}
+
+.edit {
+  margin-left: 20px;
+  font-size: 14px;
+}
+
+.list {
+  background: white;
+  border-bottom: 1px solid #ddd;
+  padding-left: 20px;
+}
+
+.item-thumb {
+  float: left;
+  height: 220px;
+  width: 220px;
+  margin: 10px;
+  text-align: center;
+  line-height: 220px;
   color: white;
   border-radius: 6px;
 }

@@ -30,10 +30,13 @@ const SessionActions = {
       success: SessionActions._removeCurrentUser
     })
   },
+  resetCurrentUser() {
+    $.get("api/user", SessionActions._receiveCurrentUser)
+  },
   _receiveCurrentUser(user) {
     Dispatcher.dispatch({
       type: "login",
-      user: user
+      user
     })
   },
   _removeCurrentUser() {

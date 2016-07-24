@@ -4,7 +4,7 @@ const ErrorActions = {
   setErrors(errors) {
     Dispatcher.dispatch({
       type: "set errors",
-      errors: errors
+      errors
     })
   }
 }

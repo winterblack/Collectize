@@ -54,13 +54,13 @@ const LoginForm = React.createClass({
     }
     return (
       <div className="screen-fade">
-        <div className="login-form-box" >
+        <div className="form-box" >
           <h1 className="logo-header">
             Collectize
             <Link to="/" className="dismiss">X</Link>
           </h1>
           <form onSubmit={this.submit} className="login-form">
-            <h2 className="login-header"> { formName }</h2>
+            <h2 className="form-header"> { formName }</h2>
             { this.errors("base") }
 
             { this.errors("username") }

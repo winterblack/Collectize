@@ -15,10 +15,10 @@ Collectize is a web application inspired by Pinterest that will use Ruby on Rail
   - [x] Smooth, bug-free navigation
   - [x] Adequate seed data to demonstrate the site's features
   - [x] Adequate CSS styling
-- [ ] Collections & Items
-  - [ ] Smooth, bug-free navigation
-  - [ ] Adequate seed data to demonstrate the site's features
-  - [ ] Adequate CSS styling
+- [x] Collections & Items
+  - [x] Smooth, bug-free navigation
+  - [x] Adequate seed data to demonstrate the site's features
+  - [x] Adequate CSS styling
 - [ ] Custom Properties
   - [ ] Smooth, bug-free navigation
   - [ ] Adequate seed data to demonstrate the site's features
@@ -78,13 +78,13 @@ Collectize is a web application inspired by Pinterest that will use Ruby on Rail
 
 - [x] create `Characteristic` model
 - [x] create `Item` model
-- [ ] Item CRUD
-- [ ] Item Form
-- [ ] Item seed data
+- [x] Item CRUD
+- [x] Item Form
+- [x] Item seed data
 - [ ] restyle `CollectionThumb`
-- [ ] style `ItemThumb`
-- [ ] style `Item`
-- [ ] style `Collection` & `CollectionForm`
+- [x] style `ItemThumb`
+- [x] style `Item`
+- [x] style `Collection` & `CollectionForm`
 
 Phase 3 adds organization to the Items. Items belong to a Collection,
 which has its own `Index` view.

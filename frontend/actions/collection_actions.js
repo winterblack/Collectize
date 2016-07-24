@@ -1,25 +1,24 @@
 const Dispatcher = require("../dispatcher")
+const CharacteristicActions = require("./characteristic_actions")
 
 const CollectionActions = {
   fetchAllCollections() {
     $.get('api/collections', CollectionActions._receiveCollections)
   },
-  fetchUserCollections() {
-    $.get('api/user', CollectionActions._receiveUserCollections)
-  },
   fetchSingleCollection(id) {
     $.get('api/collections/' + id, CollectionActions._receiveCollection)
   },
   createCollection(collection) {
-    $.post('api/collections', {collection: collection}, (response) => {
+    $.post('api/collections', {collection}, (response) => {
       CollectionActions._receiveCollection(response)
+      CharacteristicActions.createCharacteristics(collection.characteristics, response.id)
     })
   },
   deleteCollection(id) {
     $.ajax({
       url: 'api/collections/' + id,
       type: 'delete',
-      data: {id: id},
+      data: {id},
       success: CollectionActions._removeCollection
     })
   },
@@ -27,32 +26,26 @@ const CollectionActions = {
     $.ajax({
       url: 'api/collections/' + collection.id,
       type: "patch",
-      data: {collection: collection},
+      data: {collection},
       success: CollectionActions._receiveCollection
     })
   },
   _receiveCollections(collections) {
     Dispatcher.dispatch({
       type: "collections received",
-      collections: collections
-    })
-  },
-  _receiveUserCollections(user) {
-    Dispatcher.dispatch({
-      type: "user collections received",
-      collections: user.collections
+      collections
     })
   },
   _receiveCollection(collection) {
     Dispatcher.dispatch({
       type: "collection received",
-      collection: collection
+      collection
     })
   },
   _removeCollection(id) {
     Dispatcher.dispatch({
       type: "collection removed",
-      id: id
+      id
     })
   }
 }

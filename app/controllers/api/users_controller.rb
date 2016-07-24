@@ -4,7 +4,7 @@ class Api::UsersController < ApplicationController
 
   	if @user.save
   		login(@user)
-  		render "api/users/show"
+  		render :show
   	else
   		render json: @user.errors, status: 422
   	end
@@ -12,7 +12,7 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = current_user
-    render "api/users/show"
+    render :show
   end
 
   private
