@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :collections, only: [:create, :index, :update, :destroy]
     resources :characteristics, only: [:create, :destroy]
     resources :items, only: [:create, :index, :update, :destroy]
+    resources :values, only: [:create, :update]
   end
 
   root "static_pages#root"

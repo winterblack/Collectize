@@ -27,7 +27,7 @@ column name       | data type | details
 ------------------|-----------|-----------------------
 id                | integer   | not null, primary key
 value             | string    | not null
-user_id           | integer   | not null, foreign key, indexed
+item_id           | integer   | not null, foreign key, indexed
 characteristic_id | integer   | not null, foreign key, indexed
 
 ## Users

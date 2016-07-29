@@ -5,15 +5,13 @@ const CollectionIndex = require("./collection_index")
 
 const Homepage = React.createClass({
   getInitialState() {
-    return {
-      collections: CollectionStore.all()
-    };
+    return {collections: CollectionStore.all()}
   },
-  componentDidMount() {
+  componentWillMount() {
     this.collectionListener = CollectionStore.addListener(this.resetState)
     CollectionActions.fetchAllCollections()
   },
-  componentWillUnmount: function() {
+  componentWillUnmount() {
     this.collectionListener.remove()
   },
   resetState() {

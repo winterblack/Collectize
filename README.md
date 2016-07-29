@@ -19,12 +19,12 @@ Collectize is a web application inspired by Pinterest that will use Ruby on Rail
   - [x] Smooth, bug-free navigation
   - [x] Adequate seed data to demonstrate the site's features
   - [x] Adequate CSS styling
-- [ ] Custom Properties
-  - [ ] Smooth, bug-free navigation
-  - [ ] Adequate seed data to demonstrate the site's features
-  - [ ] Adequate CSS styling
-- [ ] Sort & Filter Collections
-  - [ ] Smooth, bug-free navigation
+- [x] Custom Properties
+  - [x] Smooth, bug-free navigation
+  - [x] Adequate seed data to demonstrate the site's features
+  - [x] Adequate CSS styling
+- [x] Sort & Filter Collections
+  - [x] Smooth, bug-free navigation
   - [ ] Adequate seed data to demonstrate the site's features
   - [ ] Adequate CSS styling
 
@@ -91,12 +91,12 @@ which has its own `Index` view.
 
 ### Phase 4: Sort & Filter (1 days, W2D3 6pm)
 
-**Objective:** Items can be tagged with multiple tags, and tags are searchable.
+**Objective:** Items have characteristics with values, and can be sorted and filtered by value.
 
-- [ ] create `Value` model with polymorphic relations to `Item` and `Collection`
-- [ ] create sort & filter flux API
-- [ ] create `Sort` and `Filter` form react components
-- [ ] style `Collection` with sort and filter form
+- [x] create `Value` model
+- [x] create sort & filter flux API
+- [x] create `Sort` and `Filter` form react components
+- [x] style `Collection` with sort and filter form
 
 ### Phase 5: Animate Collection (1 days, W2D4 6pm)
 

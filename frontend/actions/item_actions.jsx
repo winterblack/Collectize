@@ -1,18 +1,23 @@
 const Dispatcher = require('../dispatcher');
+const ValueActions = require("./value_actions")
+const hashHistory = require('react-router').hashHistory
 
 const ItemActions = {
-  fetchItems(collection_id) {
-    $.get('api/items', {collection_id}, ItemActions._receiveItems)
+  fetchItems(organize) {
+    $.get('api/items', {organize}, ItemActions._receiveItems)
   },
-  createItem(item) {
-    $.post('api/items', {item}, ItemActions._receiveItem)
+  createItem(item, values) {
+    $.post('api/items', {item}, (response) => {
+      ItemActions._receiveItem(response)
+      ValueActions.createValues(values, response.id)
+    })
   },
   deleteItem(id) {
     $.ajax({
       url: 'api/items/' + id,
       type: 'DELETE',
       data: {id},
-      success: ItemActions._removeItem
+      success: ItemActions._removeItem(id)
     })
   },
   editItem(item) {

@@ -1,7 +1,7 @@
 const Store = require('flux/utils').Store
 const Dispatcher = require('../dispatcher')
 const ItemStore = new Store(Dispatcher)
-let _items = {}
+let _items = []
 
 ItemStore.all = function() {
   return _items

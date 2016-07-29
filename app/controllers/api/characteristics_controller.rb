@@ -5,10 +5,6 @@ class Api::CharacteristicsController < ApplicationController
     render json: @characteristic
   end
 
-  def show
-    @characteristic = Characteristic.find(params[:id])
-  end
-
   def destroy
     @characteristic = Characteristic.find(params[:id])
     @characteristic.destroy

@@ -4,42 +4,48 @@ const CollectionStore = require("../stores/collection_store")
 const CollectionActions = require("../actions/collection_actions")
 const ItemStore = require("../stores/item_store")
 const ItemActions = require("../actions/item_actions")
+const OrganizeForm = require("./organize_form")
+const ItemIndex = require("./item_index")
 
 const Collection = React.createClass({
-  getInitialState: function() {
+  getInitialState() {
     let collection = CollectionStore.find(this.props.params.collectionId) || {}
     let items = ItemStore.all()
-    return {
-      collection,
-      items
-    };
+    return { collection, items, params: {} }
   },
-  componentDidMount: function() {
-    this.collectionListener = CollectionStore.addListener(this.resetState)
+  componentDidMount() {
     this.itemListener = ItemStore.addListener(this.resetState)
     CollectionActions.fetchAllCollections()
     ItemActions.fetchItems(this.props.params.collectionId)
   },
-  componentWillUnmount: function() {
-    this.collectionListener.remove()
+  componentWillUnmount() {
     this.itemListener.remove()
   },
   resetState() {
     let collection = CollectionStore.find(this.props.params.collectionId) || {}
+    let characteristics = collection.characteristics || [{}]
     let items = ItemStore.all()
-    this.setState({
-      collection,
-      items
-    })
+    let firstChar = characteristics[0].id
+    this.setState({ collection, items, params: {sort: firstChar, filter: firstChar} })
   },
-  render: function() {
-    let collection = this.state.collection
-    let characteristics;
-    if(collection.id) {
-      characteristics = collection.characteristics.map( characteristic => {
-        return <li className="item" key={characteristic.id}>{characteristic.name}</li>
-      })
+  updateParams(field) {
+    return (event) => {
+      let params = this.state.params
+      params[field] = parseInt(event.target.value)
+      this.setState({params})
     }
+  },
+  submit() {
+    ItemActions.fetchItems(this.state.collection.id, this.state.params)
+  },
+  itemForm() {
+    if (this.props.children) {
+      return React.cloneElement(this.props.children, {collection: this.state.collection})
+    }
+  },
+  render() {
+    let collection = this.state.collection
+    let characteristics = collection.characteristics || []
     return (
       <div>
         <div className="collection-header">
@@ -48,24 +54,39 @@ const Collection = React.createClass({
             Edit
           </Link>
         </div>
-        <ul className="list">
-          { characteristics }
-        </ul>
-        <div>
-          {
-            Object.keys(this.state.items).map( key => {
-              return (
-                <Link to={"collections/" + collection.id + "/items/" + key}
-                  key={key} className="item-thumb">
-                  <img src={this.state.items[key].image_url}/>
-                </Link>
-              )
-            })
-          }
-        </div>
-        <Link to={"collections/" + this.state.collection.id + "/newitem"}
-          className="new-collection">+</Link>
-        {this.props.children}
+        <form className="organize-form" onSubmit={this.submit}>
+          <div className="sort-column">
+            <div className="organize-header">Sort</div>
+            <div className="organize-row">
+              <select className="dropdown" onChange={this.updateParams("sort")}>
+                {characteristics.map(characteristic => {
+                  return <option key={"s" + characteristic.id} value={characteristic.id}>
+                    {characteristic.name}
+                  </option>
+                })}
+              </select>
+              <button className="sort-by">abc</button>
+            </div>
+          </div>
+          <div className="filter-column">
+            <div className="organize-header">Filter</div>
+            <div className="organize-row">
+              <select className="dropdown" onChange={this.updateParams("filter")}>
+                {characteristics.map(characteristic => {
+                  return <option key={"f" + characteristic.id} value={characteristic.id}>
+                    {characteristic.name}
+                  </option>
+                })}
+              </select>
+              <input className="filter-field" onChange={this.updateParams("from")}/>
+              To
+              <input className="filter-field" onChange={this.updateParams("to")}/>
+            </div>
+            <button className="save" type="submit">Go</button>
+          </div>
+        </form>
+        <ItemIndex items={this.state.items} collection={collection}/>
+        { this.itemForm() }
       </div>
     )
   }

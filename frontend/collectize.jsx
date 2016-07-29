@@ -14,7 +14,7 @@ const Homepage = require("./components/homepage")
 const LoginForm = require("./components/login_form")
 const Profile = require("./components/profile")
 const CollectionForm = require("./components/collection_form")
-const Collection = require("./components/collection")
+const Collection = require("./components/new_collection")
 const ItemForm = require("./components/item_form")
 
 const appRouter = (
