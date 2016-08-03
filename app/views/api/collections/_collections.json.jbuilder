@@ -8,6 +8,7 @@ collections.each do |collection|
         id: characteristic.id,
         name: characteristic.name
       }
-    }
+    },
+    items: collection.items.map { |item| item.id }
   }
 end

@@ -11,7 +11,7 @@ const CollectionActions = {
   createCollection(collection) {
     $.post('api/collections', {collection}, (response) => {
       CollectionActions._receiveCollection(response)
-      CharacteristicActions.createCharacteristics(collection.characteristics, response.id)
+      CharacteristicActions.createCharacteristics(collection.characteristics, response)
     })
   },
   deleteCollection(id) {

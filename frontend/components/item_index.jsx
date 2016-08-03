@@ -8,8 +8,10 @@ const ItemIndex = React.createClass({
     return { items: ItemStore.all() }
   },
   componentWillReceiveProps(nextProps){
-    this.itemListener = ItemStore.addListener(this.resetState)
     ItemActions.fetchItems(nextProps.params)
+  },
+  componentWillMount: function() {
+    this.itemListener = ItemStore.addListener(this.resetState)
   },
   componentWillUnmount() {
     this.itemListener.remove()

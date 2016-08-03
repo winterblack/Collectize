@@ -54,7 +54,7 @@ const CollectionForm = React.createClass({
     CollectionActions.editCollection(this.state.collection)
     CharacteristicActions.createCharacteristics(
       this.state.new_characteristics,
-      this.state.collection.id
+      this.state.collection
     )
     CollectionActions.fetchAllCollections()
     this.context.router.goBack()
