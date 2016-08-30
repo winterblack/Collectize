@@ -3,17 +3,20 @@ const Dispatcher = require('../dispatcher')
 const ItemStore = new Store(Dispatcher)
 let _items = []
 
+window.items = _items
+
 ItemStore.all = function() {
   return _items
 }
 ItemStore.find = function(id) {
-  return _items[id]
+  for (let i = 0; i < _items.length; i++) {
+    if (_items[i].id == id) {
+      return _items[i]
+    }
+  }
 }
 function resetItems(items) {
   _items = items
-}
-function resetItem(item) {
-  _items[item.id] = item
 }
 function removeItem(id) {
   delete _items[id]
@@ -25,12 +28,11 @@ ItemStore.__onDispatch = function(action) {
       ItemStore.__emitChange();
       break;
     case "item received":
-      resetItem(action.item);
       ItemStore.__emitChange();
       break;
     case "item removed":
       removeItem(action.id);
-      ItemStore.__emitChange;
+      ItemStore.__emitChange();
       break;
   }
 }

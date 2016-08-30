@@ -1,5 +1,6 @@
 const Dispatcher = require('../dispatcher');
 const ValueActions = require("./value_actions")
+const CollectionActions = require("./collection_actions")
 const hashHistory = require('react-router').hashHistory
 
 const ItemActions = {
@@ -39,6 +40,7 @@ const ItemActions = {
       type: "item received",
       item
     })
+    CollectionActions.fetchAllCollections()
   },
   _removeItem(id) {
     Dispatcher.dispatch({

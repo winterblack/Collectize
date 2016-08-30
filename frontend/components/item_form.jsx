@@ -11,8 +11,10 @@ const ItemForm = React.createClass({
     let values = item.values || this.newValues()
     return { item, values }
   },
-  componentDidMount() {
+  componentWillReceiveProps(nextProps) {
+    let collection_id = nextProps.collection.id
     this.itemListener = ItemStore.addListener(this.resetState)
+    ItemActions.fetchItems( {collection_id} )
   },
   componentWillUnmount() {
     this.itemListener.remove()
@@ -23,14 +25,14 @@ const ItemForm = React.createClass({
     this.setState({ item, values })
   },
   newValues() {
-    let characteristics = this.props.collection.characteristics || []
-    let values = []
-    for(let i = 0; i < characteristics.length; i++) {
-      values.push({
-        characteristic_id: characteristics[i].id,
+    let characteristics = this.props.collection.characteristics || {}
+    let values = {}
+    Object.keys(characteristics).map( key => {
+      values[key] = {
+        characteristic_id: key,
         value: ""
-      })
-    }
+      }
+    })
     return values
   },
   submit(event) {
@@ -49,8 +51,9 @@ const ItemForm = React.createClass({
   },
   editItem() {
     ItemActions.editItem(this.state.item)
-    this.state.values.forEach( value => {
-      ValueActions.editValue(value)
+    let values = this.state.values
+    Object.keys(values).forEach( key => {
+      ValueActions.editValue(values[key])
     })
     hashHistory.push("collections/" + this.props.collection.id)
   },
@@ -83,8 +86,8 @@ const ItemForm = React.createClass({
   },
   values() {
     let values = this.state.values
-    let characteristics = this.props.collection.characteristics || []
-    if (values.length === characteristics.length) {
+    let characteristics = this.props.collection.characteristics || {}
+    if (Object.keys(values).length > 0) {
       return Object.keys(characteristics).map( key => {
         return (
           <div key={key} className="row">

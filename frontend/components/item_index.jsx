@@ -23,13 +23,14 @@ const ItemIndex = React.createClass({
     let items = this.state.items
     let collection_id = this.props.params.collection_id
     return (
-      <div>
+      <div className="item-index">
         {
           Object.keys(items).map( key => {
+            let item = items[key]
             return (
-              <Link to={"collections/" + collection_id + "/items/" + key}
+              <Link to={"collections/" + collection_id + "/items/" + item.id}
                 key={key} className="item-thumb">
-                <img src={items[key].image_url}/>
+                <img src={item.image_url}/>
               </Link>
             )
           })

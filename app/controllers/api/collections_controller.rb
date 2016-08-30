@@ -2,7 +2,7 @@ class Api::CollectionsController < ApplicationController
 
   def create
     @collection = Collection.create!(collection_params)
-    render :show
+    render json: @collection
   end
 
   def index
@@ -12,13 +12,13 @@ class Api::CollectionsController < ApplicationController
   def update
     @collection = Collection.find(params[:id])
     @collection.update(collection_params)
-    render :show
+    render json: @collection
   end
 
   def destroy
     @collection = Collection.find(params[:id])
     @collection.destroy
-    render :show
+    render json: @collection
   end
 
   private

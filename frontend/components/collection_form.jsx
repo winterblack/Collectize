@@ -107,6 +107,7 @@ const CollectionForm = React.createClass({
   render() {
     let formName;
     let collection = this.state.collection
+    let characteristics = this.state.characteristics || {}
     if(this.props.route.path === "edit") {
       formName = "Edit " + collection.title
     } else {
@@ -132,14 +133,13 @@ const CollectionForm = React.createClass({
             </div>
             <div className="column">
               {
-                this.state.characteristics.map ( characteristic => {
+                Object.keys(characteristics).map( id => {
                   return (
-                    <div key={characteristic.id} className="characteristic-row">
-                      <div onClick={this.deleteCharacteristic}
-                        id={characteristic.id}
-                        className="delete-characteristic">X</div>
+                    <div key={id} className="characteristic-row">
+                      <div id={id} className="delete-characteristic"
+                        onClick={this.deleteCharacteristic}>X</div>
                       <div className="characteristic">
-                        {characteristic.name}
+                        {characteristics[id].name}
                       </div>
                     </div>
                   )

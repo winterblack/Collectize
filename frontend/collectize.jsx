@@ -14,8 +14,9 @@ const Homepage = require("./components/homepage")
 const LoginForm = require("./components/login_form")
 const Profile = require("./components/profile")
 const CollectionForm = require("./components/collection_form")
-const Collection = require("./components/new_collection")
+const Collection = require("./components/collection")
 const ItemForm = require("./components/item_form")
+const Item = require("./components/item")
 
 const appRouter = (
   <Router history={ hashHistory }>
@@ -30,7 +31,8 @@ const appRouter = (
       <Route path="collections/:collectionId" component={ Collection }>
         <Route path="edit" component={ CollectionForm }/>
         <Route path="newitem" component={ ItemForm }/>
-        <Route path="items/:itemId" component={ ItemForm }/>
+        <Route path="items/:itemId" component={ Item }/>
+        <Route path="items/:itemId/edit" component={ ItemForm }/>
       </Route>
     </Route>
   </Router>

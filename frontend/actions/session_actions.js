@@ -34,12 +34,14 @@ const SessionActions = {
     $.get("api/user", SessionActions._receiveCurrentUser)
   },
   _receiveCurrentUser(user) {
+    window.currentUser = user
     Dispatcher.dispatch({
       type: "login",
       user
     })
   },
   _removeCurrentUser() {
+    delete window.currentUser
     Dispatcher.dispatch({
       type: "logout"
     })

@@ -259,7 +259,6 @@
 }
 
 .label {
-  font-size: 14px;
   font-weight: bold;
   padding-left: 20px;
   height: 60px;
@@ -441,6 +440,35 @@
 
 .organize-row {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+}
+
+.value-filter {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 6px;
+  background: #eee;
+  cursor: default;
+}
+
+.selected {
+  background: #888;
+  color: #eee;
+}
+
+.item-index {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.value {
+  padding-left: 20px;
   height: 60px;
+  line-height: 60px;
+  width: 280px;
+}
+
+.link {
+  color: blue;
 }

@@ -45,7 +45,7 @@ const OrganizeForm = React.createClass({
     }
   },
   render() {
-    let characteristics = this.props.collection.characteristics || []
+    let characteristics = this.props.collection.characteristics || {}
     return (
       <div>
         <form className="organize-form">
@@ -54,9 +54,9 @@ const OrganizeForm = React.createClass({
             <div className="organize-row">
               <select className="dropdown" onChange={this.update("sort")}>
                 <option value="">none</option>
-                {characteristics.map(characteristic => {
-                  return <option key={"s" + characteristic.id} value={characteristic.id}>
-                    {characteristic.name}
+                {Object.keys(characteristics).map(id => {
+                  return <option key={"s" + id} value={id}>
+                    {characteristics[id].name}
                   </option>
                 })}
               </select>
@@ -70,9 +70,9 @@ const OrganizeForm = React.createClass({
             <div className="organize-row">
               <select className="dropdown" onChange={this.update("filter")}>
                 <option value="">none</option>
-                {characteristics.map(characteristic => {
-                  return <option key={"f" + characteristic.id} value={characteristic.id}>
-                    {characteristic.name}
+                {Object.keys(characteristics).map(id => {
+                  return <option key={"f" + id} value={id}>
+                    {characteristics[id].name}
                   </option>
                 })}
               </select>

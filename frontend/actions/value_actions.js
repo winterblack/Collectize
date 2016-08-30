@@ -2,7 +2,8 @@ const Dispatcher = require('../dispatcher')
 
 const ValueActions = {
   createValues(values, item_id) {
-    values.forEach( value => {
+    Object.keys(values).forEach( key => {
+      let value = values[key]
       value["item_id"] = item_id
       ValueActions.createValue(value)
     })
