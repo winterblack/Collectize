@@ -1,7 +1,7 @@
 {
   "name": "collectize",
   "version": "1.0.0",
-  "description": "[Heroku link][heroku]",
+  "description": "https://collectize.herokuapp.com/",
   "main": "index.js",
   "directories": {
     "doc": "docs",
@@ -13,7 +13,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "webpack"
+    "postinstall": "./node_modules/.bind/webpack"
   },
   "repository": {
     "type": "git",

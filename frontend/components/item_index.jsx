@@ -23,7 +23,7 @@ const ItemIndex = React.createClass({
     let items = this.state.items
     let collection_id = this.props.params.collection_id
     return (
-      <ul>
+      <ul className="item-index">
         {
           Object.keys(items).map( key => {
             let item = items[key]

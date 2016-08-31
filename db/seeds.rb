@@ -644,11 +644,11 @@ boardgames.each do |boardgame|
     collection_id: boardgame_collection.id
   })
   Value.create([
-    {item_id: item.id, characteristic_id: year.id, value: boardgame[:year]},
-    {item_id: item.id, characteristic_id: rating.id, value: boardgame[:rating]},
-    {item_id: item.id, characteristic_id: weight.id, value: boardgame[:weight]},
-    {item_id: item.id, characteristic_id: time.id, value: boardgame[:time]},
-    {item_id: item.id, characteristic_id: players.id, value: boardgame[:players]},
-    {item_id: item.id, characteristic_id: designer.id, value: boardgame[:designer]}
+    {item_id: item.id, characteristic_id: year[:id], value: boardgame[:year]},
+    {item_id: item.id, characteristic_id: rating[:id], value: boardgame[:rating]},
+    {item_id: item.id, characteristic_id: weight[:id], value: boardgame[:weight]},
+    {item_id: item.id, characteristic_id: time[:id], value: boardgame[:time]},
+    {item_id: item.id, characteristic_id: players[:id], value: boardgame[:players]},
+    {item_id: item.id, characteristic_id: designer[:id], value: boardgame[:designer]}
   ])
 end

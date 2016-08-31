@@ -108,7 +108,7 @@ const ItemForm = React.createClass({
     if(this.props.route.path === "newitem") {
       formName = "New Item"
     } else {
-      formName = "Edit " + item.title
+      formName = item.title
     }
     return (
       <div className="screen-fade">
