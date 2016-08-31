@@ -2,8 +2,8 @@ const Dispatcher = require("../dispatcher")
 const CharacteristicActions = require("./characteristic_actions")
 
 const CollectionActions = {
-  fetchAllCollections() {
-    $.get('api/collections', CollectionActions._receiveCollections)
+  fetchCollections(search) {
+    $.get('api/collections', search, CollectionActions._receiveCollections)
   },
   fetchSingleCollection(id) {
     $.get('api/collections/' + id, CollectionActions._receiveCollection)

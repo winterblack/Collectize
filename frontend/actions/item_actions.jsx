@@ -40,7 +40,7 @@ const ItemActions = {
       type: "item received",
       item
     })
-    CollectionActions.fetchAllCollections()
+    CollectionActions.fetchCollections()
   },
   _removeItem(id) {
     Dispatcher.dispatch({

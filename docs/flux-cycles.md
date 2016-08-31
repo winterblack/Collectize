@@ -84,7 +84,7 @@ what you'll need to do.
 
 ### Collections API Request Actions
 
-* `fetchAllCollections`
+* `fetchCollections`
   0. invoked from `CollectionsIndex` `didMount`/`willReceiveProps`
   0. `GET /api/collections` is called.
   0. `receiveAllCollections` is set as the success callback.

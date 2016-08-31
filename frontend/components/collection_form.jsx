@@ -19,7 +19,7 @@ const CollectionForm = React.createClass({
   componentDidMount() {
     if(this.props.route.path === "edit") {
       this.collectionListener = CollectionStore.addListener(this.resetState)
-      CollectionActions.fetchAllCollections()
+      CollectionActions.fetchCollections()
     }
   },
   componentWillUnmount() {
@@ -56,7 +56,7 @@ const CollectionForm = React.createClass({
       this.state.new_characteristics,
       this.state.collection
     )
-    CollectionActions.fetchAllCollections()
+    CollectionActions.fetchCollections()
     this.context.router.goBack()
   },
   deleteCollection(event) {
@@ -87,7 +87,7 @@ const CollectionForm = React.createClass({
   deleteCharacteristic(event) {
     event.preventDefault()
     CharacteristicActions.deleteCharacteristic(event.target.id)
-    CollectionActions.fetchAllCollections()
+    CollectionActions.fetchCollections()
   },
   componentDidUpdate(prevProps, prevState) {
     if(this.fieldAdded) {

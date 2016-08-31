@@ -24,14 +24,14 @@
 * `ApiActions.receiveAllCollections`
 * `ApiActions.receiveSingleCollection`
 * `ApiActions.deleteCollection`
-* `CollectionActions.fetchAllCollections`
+* `CollectionActions.fetchCollections`
 * `CollectionActions.fetchSingleCollection`
 * `CollectionActions.createCollection`
 * `CollectionActions.editCollection`
 * `CollectionActions.destroyCollection`
 
 ### ApiUtil
-* `ApiUtil.fetchAllCollections`
+* `ApiUtil.fetchCollections`
 * `ApiUtil.fetchSingleCollection`
 * `ApiUtil.createCollection`
 * `ApiUtil.editCollection`

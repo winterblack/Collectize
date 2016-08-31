@@ -9,7 +9,7 @@ const Homepage = React.createClass({
   },
   componentWillMount() {
     this.collectionListener = CollectionStore.addListener(this.resetState)
-    CollectionActions.fetchAllCollections()
+    CollectionActions.fetchCollections()
   },
   componentWillUnmount() {
     this.collectionListener.remove()

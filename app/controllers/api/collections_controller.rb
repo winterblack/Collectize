@@ -6,7 +6,11 @@ class Api::CollectionsController < ApplicationController
   end
 
   def index
-    @collections = Collection.all
+    if params[:search]
+      @collections = Collection.where("lower(title) ~ ?", params[:search].downcase)
+    else
+      @collections = Collection.all
+    end
   end
 
   def update

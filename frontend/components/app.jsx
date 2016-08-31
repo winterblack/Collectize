@@ -6,7 +6,7 @@ const App = React.createClass({
   render() {
     return (
       <div>
-        <Navbar />
+        <Navbar params={this.props.params}/>
         { this.props.children }
       </div>
     )

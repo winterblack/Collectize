@@ -197,16 +197,59 @@
   color: #888;
 }
 
-.collection-thumb {
+.thumb {
   float: left;
-  width: 220px;
-  height: 220px;
-  line-height: 220px;
+  width: 236px;
+  height: 236px;
+  line-height: 236px;
   margin: 10px;
-  text-align: center;
-  background: black;
-  color: white;
+}
+
+.collection-thumb {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+  float: left;
+  border: 1px solid #ddd;
   border-radius: 6px;
+  background: white;
+  color: transparent;
+  height: 100%;
+  width: 100%;
+}
+
+.item-thumb {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+  float: left;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #222;
+  color: transparent;
+  height: 100%;
+  width: 100%;
+}
+
+.title {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  line-height: inherit;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  border: 1px solid black;
+  background: rgba(0,0,0,0.8);
+  visibility: hidden;
+}
+
+.thumb:hover .title {
+  visibility: visible;
 }
 
 .profile-header {
@@ -221,14 +264,14 @@
 
 .new-collection {
   float: left;
-  width: 220px;
-  height: 220px;
-  line-height: 220px;
+  width: 236px;
+  height: 236px;
+  line-height: 236px;
   font-size: 110px;
   margin: 10px;
   text-align: center;
-  background: black;
-  color: white;
+  background: #222;
+  color: #eee;
   border-radius: 6px;
 }
 
@@ -367,16 +410,6 @@
   padding-left: 20px;
 }
 
-.item-thumb {
-  float: left;
-  height: 220px;
-  width: 220px;
-  margin: 10px;
-  text-align: center;
-  line-height: 220px;
-  color: white;
-  border-radius: 6px;
-}
 
 .organize-form {
   display: flex;
@@ -471,4 +504,12 @@
 
 .link {
   color: blue;
+}
+
+.preview {
+  float: left;
+  height: 70px;
+  width: 70px;
+  background: #222;
+  border-radius: 6px;
 }
