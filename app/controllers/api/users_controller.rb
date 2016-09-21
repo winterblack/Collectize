@@ -6,13 +6,12 @@ class Api::UsersController < ApplicationController
   		login(@user)
   		render :show
   	else
-  		render json: @user.errors, status: 422
+			render json: @user.errors, status: 422
   	end
   end
 
   def show
     @user = current_user
-    render :show
   end
 
   private

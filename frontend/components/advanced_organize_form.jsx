@@ -45,11 +45,14 @@ const AdvancedOrganizeForm = React.createClass({
       this.setState({filter})
     }
   },
+  toggleCollapsed() {
+    $(".organize-form").toggleClass("hide")
+  },
   render() {
     let characteristics = this.props.collection.characteristics || {}
     return (
       <div>
-        <form className="organize-form">
+        <form className="organize-form hide">
           <div className="filter-column">
             <div className="organize-header">Filter</div>
             {
@@ -80,6 +83,9 @@ const AdvancedOrganizeForm = React.createClass({
             }
           </div>
         </form>
+        <button className="collapse" onClick={this.toggleCollapsed}>
+          &bull; &bull; &bull;
+        </button>
         <ItemIndex params={this.state}/>
       </div>
     )

@@ -3,8 +3,6 @@ const Dispatcher = require('../dispatcher')
 const ItemStore = new Store(Dispatcher)
 let _items = []
 
-window.items = _items
-
 ItemStore.all = function() {
   return _items
 }

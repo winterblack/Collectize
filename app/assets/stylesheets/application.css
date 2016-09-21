@@ -513,3 +513,19 @@
   background: #222;
   border-radius: 6px;
 }
+
+.collapse {
+  display: block;
+  margin: auto;
+  height: 28px;
+  margin-top: -15px;
+  background: white;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  color: #ccc;
+}
+
+.hide {
+  display: none;
+}

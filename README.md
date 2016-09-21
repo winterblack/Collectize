@@ -25,8 +25,8 @@ Collectize is a web application inspired by Pinterest that will use Ruby on Rail
   - [x] Adequate CSS styling
 - [x] Sort & Filter Collections
   - [x] Smooth, bug-free navigation
-  - [ ] Adequate seed data to demonstrate the site's features
-  - [ ] Adequate CSS styling
+  - [x] Adequate seed data to demonstrate the site's features
+  - [x] Adequate CSS styling
 
 ## Design Docs
 * [View Wireframes][views]
@@ -69,7 +69,7 @@ Collectize is a web application inspired by Pinterest that will use Ruby on Rail
   - [x] `CollectionsIndex`
   - [x] `CollectionThumb`(dummy object)
   - [x] `CollectionForm`
-- [ ] search Collections by name in navbar
+- [x] search Collections by name in navbar
 - [x] basic styling
 
 ### Phase 3: Items (2 day, W2D2 6pm)
@@ -81,7 +81,7 @@ Collectize is a web application inspired by Pinterest that will use Ruby on Rail
 - [x] Item CRUD
 - [x] Item Form
 - [x] Item seed data
-- [ ] restyle `CollectionThumb`
+- [x] restyle `CollectionThumb`
 - [x] style `ItemThumb`
 - [x] style `Item`
 - [x] style `Collection` & `CollectionForm`
@@ -117,7 +117,6 @@ which has its own `Index` view.
 - [ ] notifications when items are added to collections you follow
 - [ ] Collections have tags; Profile has interests; Homepage displays collections by interest
 - [ ] collaborative collections have more than one owner
-- [ ] characteristic types: checkbox filters; links; textarea
 - [ ] advanced sort options (e.g. "group by", "sort by then by")
 
 [phase-one]: docs/phases/phase1.md
