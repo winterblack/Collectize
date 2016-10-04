@@ -2,7 +2,7 @@
 
 [Collectize][heroku]
 
-Collectize is a web application that allows users to create and sort collections of items however they want. It runs on a Ruby on Rails back end with a PostgresSQL database, and a React front-end, following a Flux design pattern.
+Collectize is a web application that allows users to create and filter collections of items. It runs on a Ruby on Rails back end with a PostgresSQL database, and a React front-end, following a Flux design pattern.
 
 ## Database Schema
 
@@ -22,7 +22,7 @@ class Characteristic < ActiveRecord::Base
   has_many :values, dependent: :destroy
 end
 ```
-![new collection screenshot](docs/new collection.png)
+![new collection screenshot](new collection.png)
 
 When the user creates or edits an item, they can assign values to that item for each characteristic in the collection the item belongs to. This acts just as if the user had been able to create a unique table for each of their collections.
 ```
@@ -40,7 +40,7 @@ class Value < ActiveRecord::Base
   belongs_to :item
 end
 ```
-![new item screenshot](docs/new_item.png)
+![new item screenshot](new_item.png)
 
 
 
